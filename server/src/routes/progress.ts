@@ -1,8 +1,9 @@
-const router = require("express").Router();
-const { User } = require("../models/user");
-const Token = require("../models/token");
-const Progress = require("../models/progress");
-const mongoose = require("mongoose");
+import express from "express";
+import mongoose from "mongoose";
+import Progress from "../models/progress";
+import { User } from "../models/user";
+
+const router = express.Router();
 
 router.post("/:id/:signid", async (req, res) => {
   try {
@@ -20,6 +21,8 @@ router.post("/:id/:signid", async (req, res) => {
 
     if (!sign) {
       const progress = await Progress.findOne({ userId: id });
+
+      if (!progress) return;
 
       progress.signs.push(signid);
       progress.overallProgress = progress.overallProgress + 1;
@@ -45,11 +48,11 @@ router.get("/:id", async (req, res) => {
     }
 
     // Retrieve progress for related user
-    let progress = await Progress.findOne({ userId: user._id });
+    let progress = await Progress.findOne({ userId: user?._id });
 
     if (!progress) {
       progress = await new Progress({
-        userId: user._id,
+        userId: user?._id,
         overallProgress: 0,
         signs: [],
       }).save();
@@ -65,4 +68,4 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const signSchema = new Schema({
@@ -20,4 +20,4 @@ const courseSchema = new Schema({
 const Sign = mongoose.model("sign", signSchema);
 const Course = mongoose.model("course", courseSchema);
 
-module.exports = { Sign, Course };
+export { Course, Sign };

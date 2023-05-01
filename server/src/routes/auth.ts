@@ -1,10 +1,12 @@
-const router = require("express").Router();
-const { User } = require("../models/user");
-const Token = require("../models/token");
-const crypto = require("crypto");
-const sendEmail = require("../utils/sendEmail");
-const bcrypt = require("bcrypt");
-const Joi = require("joi");
+import bcrypt from "bcrypt";
+import crypto from "crypto";
+import express from "express";
+import Joi from "joi";
+import Token from "../models/token";
+import { User } from "../models/user";
+import sendEmail from "../utils/sendEmail";
+
+const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
@@ -39,6 +41,7 @@ router.post("/", async (req, res) => {
       return res.status(400).send({ message: "An email was sent to verify your account" });
     }
 
+    // @ts-ignore
     const token = user.generateAuthToken();
     res
       .status(200)
@@ -48,7 +51,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-const validate = (data) => {
+const validate = (data: any) => {
   const schema = Joi.object({
     email: Joi.string().email().required().label("Email"),
     password: Joi.string().required().label("Password"),
@@ -56,4 +59,4 @@ const validate = (data) => {
   return schema.validate(data);
 };
 
-module.exports = router;
+export default router;

@@ -1,11 +1,13 @@
-const router = require("express").Router();
-const { User } = require("../models/user");
-const Token = require("../models/token");
-const crypto = require("crypto");
-const sendEmail = require("../utils/sendEmail");
-const Joi = require("joi");
-const passwordComplexity = require("joi-password-complexity");
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
+import crypto from "crypto";
+import express from "express";
+import Joi from "joi";
+import passwordComplexity from "joi-password-complexity";
+import Token from "../models/token";
+import { User } from "../models/user";
+import sendEmail from "../utils/sendEmail";
+
+const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
@@ -94,7 +96,7 @@ router.post("/:id/:token", async (req, res) => {
 
     user.password = hashPassword;
     await user.save();
-    await token.remove();
+    await token?.remove();
 
     res.status(200).send({ message: "Password reset successfully" });
   } catch (error) {
@@ -102,4 +104,4 @@ router.post("/:id/:token", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

@@ -1,9 +1,11 @@
-const router = require("express").Router();
-const { User, validate } = require("../models/user");
-const Token = require("../models/token");
-const crypto = require("crypto");
-const sendEmail = require("../utils/sendEmail");
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
+import crypto from "crypto";
+import express from "express";
+import Token from "../models/token";
+import { User, validate } from "../models/user";
+import sendEmail from "../utils/sendEmail";
+
+const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
@@ -63,4 +65,4 @@ router.get("/:id/verify/:token/", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
