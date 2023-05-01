@@ -25,16 +25,19 @@ export default function PasswordReset() {
     verifyUrl();
   }, [param, url]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       const { data } = await axios.post(url, { password });
       setMsg(data.message);
       setError("");
+      // @ts-ignore
       window.location = "/login";
     } catch (error) {
+      // @ts-ignore
       if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        // @ts-ignore
         setError(error.response.data.message);
         setMsg("");
       }

@@ -11,7 +11,7 @@ export default function InHome() {
     if (localStorage.getItem("was_visited")) {
       return;
     }
-    localStorage.setItem("was_visited", 1);
+    localStorage.setItem("was_visited", "1");
     return navigate("/tutorial");
   });
 

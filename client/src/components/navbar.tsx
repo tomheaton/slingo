@@ -1,6 +1,5 @@
-import React from "react";
-import NavbarCSS from "../css/navbar.module.css";
 import { useNavigate } from "react-router-dom";
+import NavbarCSS from "../css/navbar.module.css";
 
 export default function Navbar() {
   const name = localStorage.getItem("name");
@@ -10,6 +9,7 @@ export default function Navbar() {
     localStorage.removeItem("token");
     localStorage.removeItem("name");
     localStorage.removeItem("was_visited");
+    // @ts-ignore
     window.location = "/";
   };
 

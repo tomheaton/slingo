@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Navbar from "./navbar";
-import Webcam from "react-webcam";
 import * as tf from "@tensorflow/tfjs";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Webcam from "react-webcam";
+import Navbar from "./navbar";
 
 // Import drawing utility here
 import { drawRectQuizFamily } from "./utilities";
@@ -17,8 +17,8 @@ export default function Quiz() {
   const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
   const [translatedSign, setTranslatedSign] = useState("");
 
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
+  const webcamRef = useRef<Webcam>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     if (translatedSign === questions[index].answers) {
@@ -78,12 +78,13 @@ export default function Quiz() {
     },
   ];
 
-  const detect = async (net) => {
+  const detect = async (net: tf.GraphModel) => {
     // Check data is available
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
-      webcamRef.current.video.readyState === 4
+      webcamRef.current.video?.readyState === 4 &&
+      canvasRef.current !== null
     ) {
       // Get video properties
       const video = webcamRef.current.video;
@@ -105,8 +106,11 @@ export default function Quiz() {
       const expanded = casted.expandDims(0);
       const obj = await net.executeAsync(expanded);
 
+      // @ts-ignore
       const boxes = await obj[3].array();
+      // @ts-ignore
       const classes = await obj[7].array();
+      // @ts-ignore
       const scores = await obj[4].array();
 
       // Draw mesh
@@ -171,6 +175,7 @@ export default function Quiz() {
                 left: 0,
                 right: 0,
                 textAlign: "center",
+                // @ts-ignore
                 zindex: 8,
                 width: 640,
                 height: 480,

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 
 import SignupCSS from "../css/signup.module.css";
 
@@ -13,13 +13,13 @@ export default function Signup() {
   const [msg, setMsg] = useState("");
 
   // These methods will update the state properties
-  function updateForm(value) {
+  function updateForm(value: { [key: string]: string }) {
     return setData((prev) => {
       return { ...prev, ...value };
     });
   }
 
-  async function onSubmit(e) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {
@@ -28,7 +28,9 @@ export default function Signup() {
       setMsg(res.message);
       setError("");
     } catch (error) {
+      // @ts-ignore
       if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        // @ts-ignore
         setError(error.response.data.message);
         setMsg("");
       }

@@ -1,11 +1,10 @@
-import tutorialCSS from "../css/tutorial.module.css";
-import React from "react";
-import video2 from "../videos/slingo.mp4";
 import { useNavigate } from "react-router-dom";
+import tutorialCSS from "../css/tutorial.module.css";
+import video2 from "../videos/slingo.mp4";
 
 export default function Tutorial() {
   const navigate = useNavigate();
-  localStorage.setItem("was_visited", 1);
+  localStorage.setItem("was_visited", "1");
 
   return (
     <div className={tutorialCSS.container}>

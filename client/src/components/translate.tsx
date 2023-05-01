@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
-import Navbar from "./navbar";
-import Webcam from "react-webcam";
 import * as tf from "@tensorflow/tfjs";
+import { useEffect, useRef, useState } from "react";
+import Webcam from "react-webcam";
+import Navbar from "./navbar";
 
 // Import drawing utility here
 import { drawRectTranslate } from "./utilities";
@@ -9,8 +9,8 @@ import { drawRectTranslate } from "./utilities";
 import TranslateCSS from "../css/translate.module.css";
 
 function Translate() {
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
+  const webcamRef = useRef<Webcam>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [translatedSign, setTranslatedSign] = useState(""); // state variable to store translated sign
   const [translatedString, setTranslatedString] = useState(""); // state variable to store translated string
 
@@ -40,12 +40,13 @@ function Translate() {
     }, 16.7);
   };
 
-  const detect = async (net) => {
+  const detect = async (net: tf.GraphModel) => {
     // Check data is available
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
-      webcamRef.current.video.readyState === 4
+      webcamRef.current.video?.readyState === 4 &&
+      canvasRef.current !== null
     ) {
       // Get video properties
       const video = webcamRef.current.video;
@@ -67,8 +68,11 @@ function Translate() {
       const expanded = casted.expandDims(0);
       const obj = await net.executeAsync(expanded);
 
+      // @ts-ignore
       const boxes = await obj[2].array();
+      // @ts-ignore
       const classes = await obj[4].array();
+      // @ts-ignore
       const scores = await obj[7].array();
 
       // Draw mesh
@@ -129,6 +133,7 @@ function Translate() {
               left: 0,
               right: 0,
               textAlign: "center",
+              // @ts-ignore
               zindex: 8,
               width: 640,
               height: 480,

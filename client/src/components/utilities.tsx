@@ -30,14 +30,17 @@ const labelMapFamily = {
 
 // Define a drawing function
 export const drawRectTranslate = (
+  // @ts-ignore
   boxes,
+  // @ts-ignore
   classes,
+  // @ts-ignore
   scores,
-  threshold,
-  imgWidth,
-  imgHeight,
-  ctx,
-  setTranslatedSign,
+  threshold: number,
+  imgWidth: number,
+  imgHeight: number,
+  ctx: CanvasRenderingContext2D | null,
+  setTranslatedSign: (sign: string) => void,
 ) => {
   for (let i = 0; i <= boxes.length; i++) {
     if (scores[i] > threshold && boxes[i] && classes[i]) {
@@ -46,37 +49,52 @@ export const drawRectTranslate = (
       const key = classes[i];
 
       // Update translated sign
+      // @ts-ignore
       setTranslatedSign(labelMapGreetings[key]["name"]);
 
       // Set styling
+      // @ts-ignore
       ctx.strokeStyle = labelMapGreetings[key]["color"];
+      // @ts-ignore
       ctx.lineWidth = 4;
+      // @ts-ignore
       ctx.fillStyle = "white";
+      // @ts-ignore
       ctx.font = "30px Arial";
 
       // DRAW!!
+      // @ts-ignore
       ctx.beginPath();
+      // @ts-ignore
       ctx.fillText(
+        // @ts-ignore
         labelMapGreetings[key]["name"] + " - " + Math.round(scores[i] * 100) / 100,
         x * imgWidth,
         y * imgHeight - 10,
       );
+      // @ts-ignore
       ctx.rect(x * imgWidth, y * imgHeight, (width * imgWidth) / 2, (height * imgHeight) / 2);
+      // @ts-ignore
       ctx.stroke();
     }
   }
 };
 
 export const drawRectQuizGreetings = (
+  // @ts-ignore
   boxes,
+  // @ts-ignore
   classes,
+  // @ts-ignore
   scores,
-  threshold,
-  imgWidth,
-  imgHeight,
+  threshold: number,
+  imgWidth: number,
+  imgHeight: number,
+  // @ts-ignore
   ctx,
-  setTranslatedSign,
-  setIsAnswerCorrect,
+  setTranslatedSign: (sign: string) => void,
+  setIsAnswerCorrect: (isCorrect: boolean) => void,
+  // @ts-ignore
   answers,
 ) => {
   for (let i = 0; i <= boxes.length; i++) {
@@ -88,6 +106,7 @@ export const drawRectQuizGreetings = (
       console.log(key);
 
       // Update translated sign
+      // @ts-ignore
       setTranslatedSign(labelMapGreetings[key]["name"]);
 
       /* Check if answer is correct
@@ -96,6 +115,7 @@ export const drawRectQuizGreetings = (
 			} */
 
       // Set styling
+      // @ts-ignore
       ctx.strokeStyle = labelMapGreetings[key]["color"];
       ctx.lineWidth = 4;
       ctx.fillStyle = "white";
@@ -104,6 +124,7 @@ export const drawRectQuizGreetings = (
       // DRAW!!
       ctx.beginPath();
       ctx.fillText(
+        // @ts-ignore
         labelMapGreetings[key]["name"] + " - " + Math.round(scores[i] * 100) / 100,
         x * imgWidth,
         y * imgHeight - 10,
@@ -115,15 +136,20 @@ export const drawRectQuizGreetings = (
 };
 
 export const drawRectQuizFamily = (
+  // @ts-ignore
   boxes,
+  // @ts-ignore
   classes,
+  // @ts-ignore
   scores,
-  threshold,
-  imgWidth,
-  imgHeight,
+  threshold: number,
+  imgWidth: number,
+  imgHeight: number,
+  // @ts-ignore
   ctx,
-  setTranslatedSign,
-  setIsAnswerCorrect,
+  setTranslatedSign: (sign: string) => void,
+  setIsAnswerCorrect: (isCorrect: boolean) => void,
+  // @ts-ignore
   answers,
 ) => {
   for (let i = 0; i <= boxes.length; i++) {
@@ -133,6 +159,7 @@ export const drawRectQuizFamily = (
       const key = classes[i];
 
       // Update translated sign
+      // @ts-ignore
       setTranslatedSign(labelMapFamily[key]["name"]);
 
       /* Check if answer is correct
@@ -141,6 +168,7 @@ export const drawRectQuizFamily = (
 			} */
 
       // Set styling
+      // @ts-ignore
       ctx.strokeStyle = labelMapFamily[key]["color"];
       ctx.lineWidth = 4;
       ctx.fillStyle = "white";
@@ -149,6 +177,7 @@ export const drawRectQuizFamily = (
       // DRAW!!
       ctx.beginPath();
       ctx.fillText(
+        // @ts-ignore
         labelMapFamily[key]["name"] + " - " + Math.round(scores[i] * 100) / 100,
         x * imgWidth,
         y * imgHeight - 10,

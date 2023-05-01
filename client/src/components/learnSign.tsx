@@ -70,12 +70,14 @@ export default function LearnSign() {
   function handleNextClick() {
     const nextIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(nextIndex);
+    // @ts-ignore
     setSignId(signs[nextIndex]._id);
   }
 
   function handlePrevClick() {
     const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
     setCurrentIndex(prevIndex);
+    // @ts-ignore
     setSignId(signs[prevIndex]._id);
   }
 

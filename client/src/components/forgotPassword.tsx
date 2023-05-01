@@ -1,6 +1,5 @@
-import React from "react";
-import { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 
 import ForgotPasswordCSS from "../css/emailauth.module.css";
 
@@ -9,7 +8,7 @@ export default function ForgotPassword() {
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -18,7 +17,9 @@ export default function ForgotPassword() {
       setMsg(data.message);
       setError("");
     } catch (error) {
+      // @ts-ignore
       if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        // @ts-ignore
         setError(error.response.data.message);
         setMsg("");
       }

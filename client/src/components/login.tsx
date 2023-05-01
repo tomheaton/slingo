@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
 
 import LoginCSS from "../css/login.module.css";
 
@@ -11,13 +11,13 @@ export default function Login() {
   const [error, setError] = useState("");
 
   // These methods will update the state properties
-  function updateForm(value) {
+  function updateForm(value: { [key: string]: string }) {
     return setData((prev) => {
       return { ...prev, ...value };
     });
   }
 
-  async function onSubmit(e) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {
@@ -28,9 +28,12 @@ export default function Login() {
       localStorage.setItem("name", res.name);
       localStorage.setItem("userid", res.userId);
 
+      // @ts-ignore
       window.location = "/";
     } catch (error) {
+      // @ts-ignore
       if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        // @ts-ignore
         setError(error.response.data.message);
       }
     }

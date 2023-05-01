@@ -78,19 +78,21 @@ export default function LearnSign() {
   function handleNextClick() {
     const nextIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(nextIndex);
+    // @ts-ignore
     setSignId(signs[nextIndex]._id);
   }
 
   function handlePrevClick() {
     const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
     setCurrentIndex(prevIndex);
+    // @ts-ignore
     setSignId(signs[prevIndex]._id);
   }
 
   // Sign checking
   const [translatedSign, setTranslatedSign] = useState("");
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
+  const webcamRef = useRef<Webcam>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const runCoco = async () => {
     // Loading the graph model
@@ -104,12 +106,13 @@ export default function LearnSign() {
     }, 16.7);
   };
 
-  const detect = async (net) => {
+  const detect = async (net: tf.GraphModel) => {
     // Check data is available
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
-      webcamRef.current.video.readyState === 4
+      webcamRef.current.video?.readyState === 4 &&
+      canvasRef.current !== null
     ) {
       // Get video properties
       const video = webcamRef.current.video;
@@ -131,8 +134,13 @@ export default function LearnSign() {
       const expanded = casted.expandDims(0);
       const obj = await net.executeAsync(expanded);
 
+      tf.Tensor<tf.Rank>;
+
+      // @ts-ignore
       const boxes = await obj[2].array();
+      // @ts-ignore
       const classes = await obj[4].array();
+      // @ts-ignore
       const scores = await obj[7].array();
 
       // Draw mesh
@@ -140,6 +148,7 @@ export default function LearnSign() {
 
       // Update drawing utility
       requestAnimationFrame(() => {
+        // @ts-ignore
         drawRectQuizGreetings(
           boxes[0],
           classes[0],
