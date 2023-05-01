@@ -7,7 +7,6 @@ declare module "react-step-progress-bar" {
     stepPositions?: number;
     text?: string;
   }
-
   interface StepProps {
     transition?: any;
     position?: any;
