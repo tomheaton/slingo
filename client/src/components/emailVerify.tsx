@@ -1,57 +1,39 @@
-import { useEffect, useState, Fragment } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
+import React, { Fragment, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
-import PasswordResetCSS from "../css/emailauth.module.css";
+import EmailVerifyCSS from "../css/emailauth.module.css";
 
-export default function PasswordReset() {
+export default function EmailVerify() {
   const [validUrl, setValidUrl] = useState(false);
-  const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
-  const [error, setError] = useState("");
   const param = useParams();
 
-  const url = `http://localhost:8080/api/password-reset/${param.id}/${param.token}`;
-
   useEffect(() => {
-    const verifyUrl = async () => {
+    const verifyEmailUrl = async () => {
       try {
-        await axios.get(url);
+        const url = `http://localhost:8080/api/users/${param.id}/verify/${param.token}`;
+        const { data } = await axios.get(url);
+        console.log(data);
         setValidUrl(true);
       } catch (error) {
+        console.log(error);
         setValidUrl(false);
       }
     };
-    verifyUrl();
-  }, [param, url]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const { data } = await axios.post(url, { password });
-      setMsg(data.message);
-      setError("");
-      window.location = "/login";
-    } catch (error) {
-      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
-        setError(error.response.data.message);
-        setMsg("");
-      }
-    }
-  };
+    verifyEmailUrl();
+  }, [param]);
 
   return (
-    <div className={PasswordResetCSS.container}>
-      <div className={PasswordResetCSS["container-1"]}>
-        <div className={PasswordResetCSS["sub-container-1"]}>
+    <div className={EmailVerifyCSS.container}>
+      <div className={EmailVerifyCSS["container-1"]}>
+        <div className={EmailVerifyCSS["sub-container-1"]}>
           <svg
             width="100"
             height="100"
             viewBox="0 0 100 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={PasswordResetCSS["slingo-logo"]}
+            className={EmailVerifyCSS["slingo-logo"]}
           >
             <path
               fill-rule="evenodd"
@@ -60,41 +42,24 @@ export default function PasswordReset() {
               fill="white"
             />
           </svg>
-          <h1 className={PasswordResetCSS["slingo-header"]}>Slingo</h1>
+          <h1 className={EmailVerifyCSS["slingo-header"]}>Slingo</h1>
         </div>
-        <div className={PasswordResetCSS["slingo-slogan"]}>
-          <div className={PasswordResetCSS["quote-part-1"]}>
+        <div className={EmailVerifyCSS["slingo-slogan"]}>
+          <div className={EmailVerifyCSS["quote-part-1"]}>
             <p>"Sign language is the noblest gift </p>
             <p>God has given to deaf people."</p>
           </div>
-          <p className={PasswordResetCSS["quote-author"]}>- George William Veditz</p>
+          <p className={EmailVerifyCSS["quote-author"]}>- George William Veditz</p>
         </div>
       </div>
-      <div className={PasswordResetCSS["sub-container-2"]}>
+      <div className={EmailVerifyCSS["sub-container-2"]}>
         <Fragment>
           {validUrl ? (
-            <div>
-              <h1 className={PasswordResetCSS["login-header"]}>Reset password</h1>
-              <form className={PasswordResetCSS["login-form"]} onSubmit={handleSubmit}>
-                <div>
-                  <label className={PasswordResetCSS["login-form-label"]} htmlFor="password">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder={"Enter a new password"}
-                  />
-                </div>
-                {error && <div>{error}</div>}
-                {msg && <div>{msg}</div>}
-                <button className={PasswordResetCSS["login-button"]} type="submit">
-                  Submit
-                </button>
-              </form>
+            <div className={EmailVerifyCSS["login-form"]}>
+              <h4 className={EmailVerifyCSS["login-header"]}>Email verified successfully</h4>
+              <Link to="/login">
+                <button className={EmailVerifyCSS["login-button"]}>Login</button>
+              </Link>
             </div>
           ) : (
             <h1>404 Not Found</h1>

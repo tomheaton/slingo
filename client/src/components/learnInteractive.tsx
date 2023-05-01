@@ -1,8 +1,7 @@
-import { React, useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import learnSignCSS from "../css/learnInteractive.module.css";
 // import QuizCSS from "../css/quiz.module.css";
-import Navbar from "./navbar";
 import axios from "axios";
 import afternoon from "./greetings/afternoon.jpg";
 import bad from "./greetings/bad.jpg";
@@ -15,9 +14,10 @@ import morning from "./greetings/morning.jpg";
 import name from "./greetings/name.jpg";
 import thanks from "./greetings/thanks.jpg";
 import you from "./greetings/you.jpg";
+import Navbar from "./navbar";
 
-import Webcam from "react-webcam";
 import * as tf from "@tensorflow/tfjs";
+import Webcam from "react-webcam";
 // Import drawing utility here
 import { drawRectQuizGreetings } from "./utilities";
 
@@ -206,4 +206,10 @@ export default function LearnSign() {
       </div>
     );
   }
+
+  return (
+    <div>
+      <p>loading...</p>
+    </div>
+  );
 }

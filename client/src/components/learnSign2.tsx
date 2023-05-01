@@ -1,19 +1,19 @@
-import { React, useState, useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import learnSignCSS from "../css/learnSign.module.css";
-import Navbar from "./navbar";
-import axios from "axios";
-import father from "./family/father.jpg";
-import mother from "./family/mother.jpg";
-import son from "./family/son.jpg";
-import daughter from "./family/daughter.jpg";
-import brother from "./family/brother.jpg";
-import sister from "./family/sister.jpg";
-import step from "./family/step.jpg";
 import baby from "./family/baby.jpg";
+import brother from "./family/brother.jpg";
+import daughter from "./family/daughter.jpg";
+import father from "./family/father.jpg";
 import home from "./family/home.jpg";
+import mother from "./family/mother.jpg";
 import my from "./family/my.jpg";
+import sister from "./family/sister.jpg";
+import son from "./family/son.jpg";
+import step from "./family/step.jpg";
 import your from "./family/your.jpg";
+import Navbar from "./navbar";
 
 export default function LearnSign2() {
   const navigate = useNavigate();
@@ -102,4 +102,10 @@ export default function LearnSign2() {
       </div>
     );
   }
+
+  return (
+    <div>
+      <p>loading...</p>
+    </div>
+  );
 }

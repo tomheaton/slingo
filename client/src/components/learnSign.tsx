@@ -1,8 +1,7 @@
-import { React, useState, useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import learnSignCSS from "../css/learnSign.module.css";
-import Navbar from "./navbar";
-import axios from "axios";
 import afternoon from "./greetings/afternoon.jpg";
 import bad from "./greetings/bad.jpg";
 import good from "./greetings/good.jpg";
@@ -14,6 +13,7 @@ import morning from "./greetings/morning.jpg";
 import name from "./greetings/name.jpg";
 import thanks from "./greetings/thanks.jpg";
 import you from "./greetings/you.jpg";
+import Navbar from "./navbar";
 
 export default function LearnSign() {
   const navigate = useNavigate();
@@ -102,4 +102,10 @@ export default function LearnSign() {
       </div>
     );
   }
+
+  return (
+    <div>
+      <p>loading...</p>
+    </div>
+  );
 }

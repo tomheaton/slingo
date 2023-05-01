@@ -1,10 +1,10 @@
-import { React, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "react-step-progress-bar/styles.css";
-import { ProgressBar } from "react-step-progress-bar";
-import Modal from "react-modal";
-import Navbar from "./navbar";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Modal from "react-modal";
+import { useNavigate } from "react-router-dom";
+import { ProgressBar } from "react-step-progress-bar";
+import "react-step-progress-bar/styles.css";
+import Navbar from "./navbar";
 
 import learnCSS from "../css/learn.module.css";
 

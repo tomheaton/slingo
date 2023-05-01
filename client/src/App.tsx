@@ -23,7 +23,9 @@ const App = () => {
   return (
     <div>
       <Routes>
+        {/* @ts-ignore */}
         {user && <Route exact path="/" element={<InHome />} />}
+        {/* @ts-ignore */}
         <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

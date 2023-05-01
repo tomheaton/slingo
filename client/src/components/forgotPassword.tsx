@@ -1,39 +1,41 @@
-import { useEffect, useState, Fragment } from "react";
-import { useParams, Link } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
 import axios from "axios";
 
-import EmailVerifyCSS from "../css/emailauth.module.css";
+import ForgotPasswordCSS from "../css/emailauth.module.css";
 
-export default function EmailVerify() {
-  const [validUrl, setValidUrl] = useState(false);
-  const param = useParams();
+export default function ForgotPassword() {
+  const [email, setEmail] = useState("");
+  const [msg, setMsg] = useState("");
+  const [error, setError] = useState("");
 
-  useEffect(() => {
-    const verifyEmailUrl = async () => {
-      try {
-        const url = `http://localhost:8080/api/users/${param.id}/verify/${param.token}`;
-        const { data } = await axios.get(url);
-        console.log(data);
-        setValidUrl(true);
-      } catch (error) {
-        console.log(error);
-        setValidUrl(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const url = `http://localhost:8080/api/password-reset`;
+      const { data } = await axios.post(url, { email });
+      setMsg(data.message);
+      setError("");
+    } catch (error) {
+      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        setError(error.response.data.message);
+        setMsg("");
       }
-    };
-    verifyEmailUrl();
-  }, [param]);
+    }
+  };
 
   return (
-    <div className={EmailVerifyCSS.container}>
-      <div className={EmailVerifyCSS["container-1"]}>
-        <div className={EmailVerifyCSS["sub-container-1"]}>
+    <div className={ForgotPasswordCSS.container}>
+      <div className={ForgotPasswordCSS["container-1"]}>
+        <div className={ForgotPasswordCSS["sub-container-1"]}>
           <svg
             width="100"
             height="100"
             viewBox="0 0 100 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={EmailVerifyCSS["slingo-logo"]}
+            className={ForgotPasswordCSS["slingo-logo"]}
           >
             <path
               fill-rule="evenodd"
@@ -42,29 +44,38 @@ export default function EmailVerify() {
               fill="white"
             />
           </svg>
-          <h1 className={EmailVerifyCSS["slingo-header"]}>Slingo</h1>
+          <h1 className={ForgotPasswordCSS["slingo-header"]}>Slingo</h1>
         </div>
-        <div className={EmailVerifyCSS["slingo-slogan"]}>
-          <div className={EmailVerifyCSS["quote-part-1"]}>
+        <div className={ForgotPasswordCSS["slingo-slogan"]}>
+          <div className={ForgotPasswordCSS["quote-part-1"]}>
             <p>"Sign language is the noblest gift </p>
             <p>God has given to deaf people."</p>
           </div>
-          <p className={EmailVerifyCSS["quote-author"]}>- George William Veditz</p>
+          <p className={ForgotPasswordCSS["quote-author"]}>- George William Veditz</p>
         </div>
       </div>
-      <div className={EmailVerifyCSS["sub-container-2"]}>
-        <Fragment>
-          {validUrl ? (
-            <div className={EmailVerifyCSS["login-form"]}>
-              <h4 className={EmailVerifyCSS["login-header"]}>Email verified successfully</h4>
-              <Link to="/login">
-                <button className={EmailVerifyCSS["login-button"]}>Login</button>
-              </Link>
-            </div>
-          ) : (
-            <h1>404 Not Found</h1>
-          )}
-        </Fragment>
+      <div className={ForgotPasswordCSS["sub-container-2"]}>
+        <h1 className={ForgotPasswordCSS["login-header"]}>Forgot password</h1>
+        <form className={ForgotPasswordCSS["login-form"]} onSubmit={handleSubmit}>
+          <div>
+            <label className={ForgotPasswordCSS["login-form-label"]} htmlFor="email">
+              Email
+            </label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={"Enter your email"}
+            />
+          </div>
+          {error && <div>{error}</div>}
+          {msg && <div>{msg}</div>}
+          <button className={ForgotPasswordCSS["login-button"]} type="submit">
+            Submit
+          </button>
+        </form>
       </div>
     </div>
   );
