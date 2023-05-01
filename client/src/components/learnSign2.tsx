@@ -2,17 +2,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import learnSignCSS from "../css/learnSign.module.css";
-import baby from "./family/baby.jpg";
-import brother from "./family/brother.jpg";
-import daughter from "./family/daughter.jpg";
-import father from "./family/father.jpg";
-import home from "./family/home.jpg";
-import mother from "./family/mother.jpg";
-import my from "./family/my.jpg";
-import sister from "./family/sister.jpg";
-import son from "./family/son.jpg";
-import step from "./family/step.jpg";
-import your from "./family/your.jpg";
+import baby from "../images/family/baby.jpg";
+import brother from "../images/family/brother.jpg";
+import daughter from "../images/family/daughter.jpg";
+import father from "../images/family/father.jpg";
+import home from "../images/family/home.jpg";
+import mother from "../images/family/mother.jpg";
+import my from "../images/family/my.jpg";
+import sister from "../images/family/sister.jpg";
+import son from "../images/family/son.jpg";
+import step from "../images/family/step.jpg";
+import your from "../images/family/your.jpg";
 import Navbar from "./navbar";
 
 export default function LearnSign2() {

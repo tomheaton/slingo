@@ -2,17 +2,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import learnSignCSS from "../css/learnSign.module.css";
-import afternoon from "./greetings/afternoon.jpg";
-import bad from "./greetings/bad.jpg";
-import good from "./greetings/good.jpg";
-import hello from "./greetings/hello.jpg";
-import how from "./greetings/how.jpg";
-import luck from "./greetings/luck.jpg";
-import meet from "./greetings/meet.jpg";
-import morning from "./greetings/morning.jpg";
-import name from "./greetings/name.jpg";
-import thanks from "./greetings/thanks.jpg";
-import you from "./greetings/you.jpg";
+import afternoon from "../images/greetings/afternoon.jpg";
+import bad from "../images/greetings/bad.jpg";
+import good from "../images/greetings/good.jpg";
+import hello from "../images/greetings/hello.jpg";
+import how from "../images/greetings/how.jpg";
+import luck from "../images/greetings/luck.jpg";
+import meet from "../images/greetings/meet.jpg";
+import morning from "../images/greetings/morning.jpg";
+import name from "../images/greetings/name.jpg";
+import thanks from "../images/greetings/thanks.jpg";
+import you from "../images/greetings/you.jpg";
 import Navbar from "./navbar";
 
 export default function LearnSign() {
