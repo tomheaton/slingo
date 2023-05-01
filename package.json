@@ -14,11 +14,15 @@
   },
   "homepage": "https://github.com/niccolosottile/slingo#readme",
   "scripts": {
-    "client": "npm run start --prefix client",
-    "server": "npm run start --prefix server",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "client": "yarn start --prefix client",
+    "server": "yarn start --prefix server",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "devDependencies": {
     "concurrently": "^7.6.0"
-  }
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ]
 }
