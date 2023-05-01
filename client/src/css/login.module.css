@@ -127,7 +127,8 @@ input[type="text"] {
   font-size: 18px;
 }
 
-.login-button:hover, .login-button:hover {
+.login-button:hover,
+.login-button:hover {
   background-color: #f85b18;
 }
 

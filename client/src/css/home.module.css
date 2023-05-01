@@ -16,7 +16,7 @@
 
 .body {
   flex: 1;
-  background: linear-gradient(180deg, #FFAA45 0%, #FF7D1E 100%);
+  background: linear-gradient(180deg, #ffaa45 0%, #ff7d1e 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding-bottom: 140px;
@@ -139,7 +139,7 @@
 
 .sub-container p {
   font-size: 16px;
-  color: #6A6A6A;
+  color: #6a6a6a;
   line-height: 1.5;
   font-weight: 400;
   margin-top: 24px;

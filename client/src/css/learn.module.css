@@ -73,7 +73,7 @@
   border-radius: 30px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
- 
+
 .modal-content {
   display: flex;
   flex-direction: column;
@@ -103,9 +103,7 @@
   font-size: 16px;
   font-weight: 400;
   flex: 1;
-  min-width: calc(
-    33.33% - 20px
-  );
+  min-width: calc(33.33% - 20px);
   padding: 12px 48px;
   background-color: #ff6c2d;
   color: #ffffff;

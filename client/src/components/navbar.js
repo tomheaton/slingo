@@ -3,14 +3,13 @@ import NavbarCSS from "../css/navbar.module.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
-
   const name = localStorage.getItem("name");
   const navigate = useNavigate();
-  
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("name");
-    localStorage.removeItem("was_visited")
+    localStorage.removeItem("was_visited");
     window.location = "/";
   };
 
@@ -63,13 +62,7 @@ export default function Navbar() {
                 xmlns="http://www.w3.org/2000/svg"
                 className={NavbarCSS["navigation-icon-forward"]}
               >
-                <circle
-                  cx="30"
-                  cy="30"
-                  r="30"
-                  transform="rotate(180 30 30)"
-                  fill="#FF6C2D"
-                />
+                <circle cx="30" cy="30" r="30" transform="rotate(180 30 30)" fill="#FF6C2D" />
                 <path
                   d="M24.9286 15.5323L37.5714 28.9544C37.6905 29.1065 37.7917 29.2649 37.875 29.4297C37.9583 29.5944 38 29.7909 38 30.019C38 30.1965 37.9583 30.3739 37.875 30.5513C37.7917 30.7288 37.6905 30.8809 37.5714 31.0076L24.9286 44.4677C24.619 44.8226 24.2202 45 23.7321 45C23.244 45 22.8452 44.8226 22.5357 44.4677C22.1786 44.1128 22 43.6819 22 43.1749C22 42.6679 22.1786 42.2243 22.5357 41.8441L33.6429 30.019L22.5 18.1559C22.1905 17.7757 22.0298 17.3321 22.0179 16.8251C22.006 16.3181 22.1667 15.8999 22.5 15.5703C22.8571 15.1901 23.2738 15 23.75 15C24.2262 15 24.619 15.1774 24.9286 15.5323Z"
                   fill="white"
@@ -77,8 +70,12 @@ export default function Navbar() {
               </svg>
             </a>
           </div>
-          <a className={NavbarCSS["user-name"]} href="#">{name}</a>
-          <a className={NavbarCSS["logout-button"]} onClick={handleLogout}>Logout</a>
+          <a className={NavbarCSS["user-name"]} href="#">
+            {name}
+          </a>
+          <a className={NavbarCSS["logout-button"]} onClick={handleLogout}>
+            Logout
+          </a>
         </div>
       </div>
     </nav>

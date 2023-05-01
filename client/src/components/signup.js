@@ -15,7 +15,7 @@ export default function Signup() {
   // These methods will update the state properties
   function updateForm(value) {
     return setData((prev) => {
-        return { ...prev, ...value };
+      return { ...prev, ...value };
     });
   }
 
@@ -28,15 +28,11 @@ export default function Signup() {
       setMsg(res.message);
       setError("");
     } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
+      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
         setError(error.response.data.message);
         setMsg("");
       }
-    }   
+    }
   }
 
   // This section will display the form that takes the input from the user
@@ -112,7 +108,7 @@ export default function Signup() {
             />
           </div>
           {error && <div>{error}</div>}
-					{msg && <div>{msg}</div>}
+          {msg && <div>{msg}</div>}
           <button className={SignupCSS["create-account-button"]} type="submit">
             Create Account
           </button>

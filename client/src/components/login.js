@@ -13,7 +13,7 @@ export default function Login() {
   // These methods will update the state properties
   function updateForm(value) {
     return setData((prev) => {
-        return { ...prev, ...value };
+      return { ...prev, ...value };
     });
   }
 
@@ -27,14 +27,10 @@ export default function Login() {
       localStorage.setItem("token", res.token);
       localStorage.setItem("name", res.name);
       localStorage.setItem("userid", res.userId);
-      
+
       window.location = "/";
     } catch (error) {
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
+      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
         setError(error.response.data.message);
       }
     }
@@ -95,7 +91,7 @@ export default function Login() {
               onChange={(e) => updateForm({ password: e.target.value })}
               placeholder={"Enter your password"}
             />
-            <a className={LoginCSS["forgot-password"]} href="/forgot-password"> 
+            <a className={LoginCSS["forgot-password"]} href="/forgot-password">
               Forgot password?
             </a>
           </div>

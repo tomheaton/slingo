@@ -35,11 +35,11 @@
 }
 
 .slide-show button {
-  color: #FFFFFF;
+  color: #ffffff;
   min-width: 80px;
   padding: 8px;
   min-height: 36px;
-  background-color: #FF6C2D;
+  background-color: #ff6c2d;
   border: none;
   border-radius: 15px;
 }
@@ -63,7 +63,7 @@
 }
 
 .leave-button {
-  color: #FF4949;
+  color: #ff4949;
   font-size: 18px;
   background: transparent;
   border: none;

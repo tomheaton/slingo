@@ -16,10 +16,12 @@
   "scripts": {
     "client": "yarn start --prefix client",
     "server": "yarn start --prefix server",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "format": "prettier --write ."
   },
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "prettier": "^2.8.8"
   },
   "workspaces": [
     "client",

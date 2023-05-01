@@ -118,26 +118,27 @@ input[type="text"] {
   font-size: 18px;
 }
 
-.create-account-button:hover, .create-account-button:focus {
+.create-account-button:hover,
+.create-account-button:focus {
   background-color: #f85b18;
 }
 
 .link-to-login {
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 24px;
-    font-size: 12px;
-  }
-  
-.link-to-login a {
-    text-decoration: none;
-    color: #ff6c2d;
-    font-weight: 600;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 24px;
+  font-size: 12px;
 }
-  
+
+.link-to-login a {
+  text-decoration: none;
+  color: #ff6c2d;
+  font-weight: 600;
+}
+
 .link-to-login a:hover {
-    /* Darken the color a bit */
-    color: #f85b18;
+  /* Darken the color a bit */
+  color: #f85b18;
 }
 
 .or-separator {
@@ -159,4 +160,3 @@ input[type="text"] {
   /* Reduce size a bit */
   transform: scale(0.72);
 }
-

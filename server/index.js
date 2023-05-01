@@ -24,4 +24,4 @@ app.use("/api/progress", progress);
 app.use("/api/courses", courses);
 
 const port = process.env.PORT || 8080;
-app.listen(port, console.log(`Server is running on port: ${port}!`))
+app.listen(port, console.log(`Server is running on port: ${port}!`));

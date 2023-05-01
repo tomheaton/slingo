@@ -27,7 +27,7 @@
 }
 
 .question-count {
-  color: #6F6F6F;
+  color: #6f6f6f;
   font-size: 16px;
 }
 
@@ -39,7 +39,7 @@
 
 .question-section {
   font-size: 24px;
-  color: #7E7E7E;
+  color: #7e7e7e;
 }
 
 .button-1 {
@@ -70,7 +70,7 @@
   background: none;
   border: none;
   font-size: 24px;
-  color: #FF6C2D;
+  color: #ff6c2d;
 }
 
 .skip-button:hover {
@@ -83,7 +83,7 @@
 }
 
 .leave-button {
-  color: #FF4949;
+  color: #ff4949;
   font-size: 18px;
   background: transparent;
   border: none;

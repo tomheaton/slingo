@@ -10,8 +10,15 @@ export default function Home() {
         <nav className={HomeCSS.navbar}>
           <div className={HomeCSS["navbar-container"]}>
             <div className={HomeCSS["navbar-right"]}>
-              <button onClick={() => navigate("/login")} className={HomeCSS["navbar-button-login"]}>Login</button>
-              <button onClick={() => navigate("/signup")}className={HomeCSS["navbar-button-signup"]}>Signup</button>
+              <button onClick={() => navigate("/login")} className={HomeCSS["navbar-button-login"]}>
+                Login
+              </button>
+              <button
+                onClick={() => navigate("/signup")}
+                className={HomeCSS["navbar-button-signup"]}
+              >
+                Signup
+              </button>
             </div>
           </div>
         </nav>
@@ -36,14 +43,12 @@ export default function Home() {
             <div className={HomeCSS["sub-container-content"]}>
               <h1>What is Slingo?</h1>
               <p>
-                Slingo is a web application where learning and translating sign
-                language is made simple and accessible. Our mission is to
-                support the deaf community by providing a platform for
-                individuals to improve their sign language skills and
-                effectively communicate with those who use sign language. With
-                our user-friendly interface and innovative technology, learning
-                sign language has never been easier. Join us now to start your
-                journey.
+                Slingo is a web application where learning and translating sign language is made
+                simple and accessible. Our mission is to support the deaf community by providing a
+                platform for individuals to improve their sign language skills and effectively
+                communicate with those who use sign language. With our user-friendly interface and
+                innovative technology, learning sign language has never been easier. Join us now to
+                start your journey.
               </p>
             </div>
           </div>
@@ -69,9 +74,7 @@ export default function Home() {
             <h2>Slingo</h2>
           </div>
           <blockquote>Language is more than just voice</blockquote>
-          <p className={HomeCSS["footer-copyright"]}>
-            © Slingo 2023. All rights reserved.
-          </p>
+          <p className={HomeCSS["footer-copyright"]}>© Slingo 2023. All rights reserved.</p>
         </div>
       </div>
     </div>
