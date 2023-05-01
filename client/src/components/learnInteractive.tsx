@@ -1,8 +1,9 @@
+import * as tf from "@tensorflow/tfjs";
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import learnSignCSS from "../css/learnInteractive.module.css";
-// import QuizCSS from "../css/quiz.module.css";
-import axios from "axios";
+import Webcam from "react-webcam";
+import styles from "../css/learnInteractive.module.css";
 import afternoon from "../images/greetings/afternoon.jpg";
 import bad from "../images/greetings/bad.jpg";
 import good from "../images/greetings/good.jpg";
@@ -14,12 +15,8 @@ import morning from "../images/greetings/morning.jpg";
 import name from "../images/greetings/name.jpg";
 import thanks from "../images/greetings/thanks.jpg";
 import you from "../images/greetings/you.jpg";
+import { drawRectQuizGreetings } from "../utils";
 import Navbar from "./navbar";
-
-import * as tf from "@tensorflow/tfjs";
-import Webcam from "react-webcam";
-// Import drawing utility here
-import { drawRectQuizGreetings } from "./utilities";
 
 export default function LearnSign() {
   const navigate = useNavigate();
@@ -173,12 +170,12 @@ export default function LearnSign() {
     runCoco();
 
     return (
-      <div className={learnSignCSS.container}>
+      <div className={styles.container}>
         <Navbar />
-        <div className={learnSignCSS.content}>
-          <h1 className={learnSignCSS.title}>{signs[currentIndex]["name"]}</h1>
-          <div className={learnSignCSS["slide-show"]}>
-            <button className={learnSignCSS.previous} onClick={handlePrevClick}>
+        <div className={styles.content}>
+          <h1 className={styles.title}>{signs[currentIndex]["name"]}</h1>
+          <div className={styles["slide-show"]}>
+            <button className={styles.previous} onClick={handlePrevClick}>
               Previous
             </button>
             <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
@@ -203,12 +200,12 @@ export default function LearnSign() {
                 }}
               />
             </div>
-            <button className={learnSignCSS.next} onClick={handleNextClick}>
+            <button className={styles.next} onClick={handleNextClick}>
               Next
             </button>
           </div>
-          <p className={learnSignCSS.description}>{signs[currentIndex]["description"]}</p>
-          <button onClick={() => navigate("/learn")} className={learnSignCSS["leave-button"]}>
+          <p className={styles.description}>{signs[currentIndex]["description"]}</p>
+          <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
             Leave session
           </button>
         </div>

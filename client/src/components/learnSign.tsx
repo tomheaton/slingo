@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import learnSignCSS from "../css/learnSign.module.css";
+import styles from "../css/learnSign.module.css";
 import afternoon from "../images/greetings/afternoon.jpg";
 import bad from "../images/greetings/bad.jpg";
 import good from "../images/greetings/good.jpg";
@@ -83,21 +83,21 @@ export default function LearnSign() {
 
   if (!loading) {
     return (
-      <div className={learnSignCSS.container}>
+      <div className={styles.container}>
         <Navbar />
-        <div className={learnSignCSS.content}>
-          <h1 className={learnSignCSS.title}>{signs[currentIndex]["name"]}</h1>
-          <div className={learnSignCSS["slide-show"]}>
-            <button className={learnSignCSS.previous} onClick={handlePrevClick}>
+        <div className={styles.content}>
+          <h1 className={styles.title}>{signs[currentIndex]["name"]}</h1>
+          <div className={styles["slide-show"]}>
+            <button className={styles.previous} onClick={handlePrevClick}>
               Previous
             </button>
             <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-            <button className={learnSignCSS.next} onClick={handleNextClick}>
+            <button className={styles.next} onClick={handleNextClick}>
               Next
             </button>
           </div>
-          <p className={learnSignCSS.description}>{signs[currentIndex]["description"]}</p>
-          <button onClick={() => navigate("/learn")} className={learnSignCSS["leave-button"]}>
+          <p className={styles.description}>{signs[currentIndex]["description"]}</p>
+          <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
             Leave session
           </button>
         </div>

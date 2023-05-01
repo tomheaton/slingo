@@ -1,35 +1,34 @@
-import React from "react";
-import HomeCSS from "../css/home.module.css";
 import { useNavigate } from "react-router-dom";
+import styles from "../css/home.module.css";
 
 export default function Home() {
   const navigate = useNavigate();
   return (
-    <div className={HomeCSS.container}>
-      <body className={HomeCSS.body}>
-        <nav className={HomeCSS.navbar}>
-          <div className={HomeCSS["navbar-container"]}>
-            <div className={HomeCSS["navbar-right"]}>
-              <button onClick={() => navigate("/login")} className={HomeCSS["navbar-button-login"]}>
+    <div className={styles.container}>
+      <body className={styles.body}>
+        <nav className={styles.navbar}>
+          <div className={styles["navbar-container"]}>
+            <div className={styles["navbar-right"]}>
+              <button onClick={() => navigate("/login")} className={styles["navbar-button-login"]}>
                 Login
               </button>
               <button
                 onClick={() => navigate("/signup")}
-                className={HomeCSS["navbar-button-signup"]}
+                className={styles["navbar-button-signup"]}
               >
                 Signup
               </button>
             </div>
           </div>
         </nav>
-        <div className={HomeCSS["container-1"]}>
+        <div className={styles["container-1"]}>
           <svg
             width="100"
             height="100"
             viewBox="0 0 100 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={HomeCSS["slingo-logo"]}
+            className={styles["slingo-logo"]}
           >
             <circle cx="50" cy="50" r="50" fill="#FF6C2D" />
             <path
@@ -39,8 +38,8 @@ export default function Home() {
           </svg>
           <h1>Slingo</h1>
           <blockquote>Language is more than just voice</blockquote>
-          <div className={HomeCSS["sub-container"]}>
-            <div className={HomeCSS["sub-container-content"]}>
+          <div className={styles["sub-container"]}>
+            <div className={styles["sub-container-content"]}>
               <h1>What is Slingo?</h1>
               <p>
                 Slingo is a web application where learning and translating sign language is made
@@ -54,16 +53,16 @@ export default function Home() {
           </div>
         </div>
       </body>
-      <div className={HomeCSS.footer}>
-        <div className={HomeCSS["footer-content"]}>
-          <div className={HomeCSS["slingo-logo-text"]}>
+      <div className={styles.footer}>
+        <div className={styles["footer-content"]}>
+          <div className={styles["slingo-logo-text"]}>
             <svg
               width="100"
               height="100"
               viewBox="0 0 100 100"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={HomeCSS["slingo-logo-2"]}
+              className={styles["slingo-logo-2"]}
             >
               <circle cx="50" cy="50" r="50" fill="#FF6C2D" />
               <path
@@ -74,7 +73,7 @@ export default function Home() {
             <h2>Slingo</h2>
           </div>
           <blockquote>Language is more than just voice</blockquote>
-          <p className={HomeCSS["footer-copyright"]}>© Slingo 2023. All rights reserved.</p>
+          <p className={styles["footer-copyright"]}>© Slingo 2023. All rights reserved.</p>
         </div>
       </div>
     </div>

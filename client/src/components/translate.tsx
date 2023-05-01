@@ -1,12 +1,9 @@
 import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
+import styles from "../css/translate.module.css";
+import { drawRectTranslate } from "../utils";
 import Navbar from "./navbar";
-
-// Import drawing utility here
-import { drawRectTranslate } from "./utilities";
-
-import TranslateCSS from "../css/translate.module.css";
 
 function Translate() {
   const webcamRef = useRef<Webcam>(null);
@@ -105,23 +102,23 @@ function Translate() {
   }, []);
 
   return (
-    <div className={TranslateCSS.container}>
+    <div className={styles.container}>
       <Navbar />
-      <div className={TranslateCSS["results-container"]}>
-        <div className={TranslateCSS["results-container-content"]}>
-          <div className={TranslateCSS["clear-output-container"]}>
+      <div className={styles["results-container"]}>
+        <div className={styles["results-container-content"]}>
+          <div className={styles["clear-output-container"]}>
             <button
-              className={TranslateCSS["clear-output-button"]}
+              className={styles["clear-output-button"]}
               onClick={() => clearTranslatedString()}
             >
               Clear output
             </button>
           </div>
-          <p className={TranslateCSS.results}>{translatedString}</p>
+          <p className={styles.results}>{translatedString}</p>
         </div>
       </div>
-      <div className={TranslateCSS["camera-view"]}>
-        <div className={TranslateCSS.webcam}>
+      <div className={styles["camera-view"]}>
+        <div className={styles.webcam}>
           <Webcam ref={webcamRef} muted={true} />
 
           <canvas

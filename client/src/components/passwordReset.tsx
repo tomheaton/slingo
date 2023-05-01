@@ -1,8 +1,7 @@
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import PasswordResetCSS from "../css/emailauth.module.css";
+import styles from "../css/emailauth.module.css";
 
 export default function PasswordReset() {
   const [validUrl, setValidUrl] = useState(false);
@@ -45,16 +44,16 @@ export default function PasswordReset() {
   };
 
   return (
-    <div className={PasswordResetCSS.container}>
-      <div className={PasswordResetCSS["container-1"]}>
-        <div className={PasswordResetCSS["sub-container-1"]}>
+    <div className={styles.container}>
+      <div className={styles["container-1"]}>
+        <div className={styles["sub-container-1"]}>
           <svg
             width="100"
             height="100"
             viewBox="0 0 100 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={PasswordResetCSS["slingo-logo"]}
+            className={styles["slingo-logo"]}
           >
             <path
               fill-rule="evenodd"
@@ -63,24 +62,24 @@ export default function PasswordReset() {
               fill="white"
             />
           </svg>
-          <h1 className={PasswordResetCSS["slingo-header"]}>Slingo</h1>
+          <h1 className={styles["slingo-header"]}>Slingo</h1>
         </div>
-        <div className={PasswordResetCSS["slingo-slogan"]}>
-          <div className={PasswordResetCSS["quote-part-1"]}>
+        <div className={styles["slingo-slogan"]}>
+          <div className={styles["quote-part-1"]}>
             <p>"Sign language is the noblest gift </p>
             <p>God has given to deaf people."</p>
           </div>
-          <p className={PasswordResetCSS["quote-author"]}>- George William Veditz</p>
+          <p className={styles["quote-author"]}>- George William Veditz</p>
         </div>
       </div>
-      <div className={PasswordResetCSS["sub-container-2"]}>
+      <div className={styles["sub-container-2"]}>
         <Fragment>
           {validUrl ? (
             <div>
-              <h1 className={PasswordResetCSS["login-header"]}>Reset password</h1>
-              <form className={PasswordResetCSS["login-form"]} onSubmit={handleSubmit}>
+              <h1 className={styles["login-header"]}>Reset password</h1>
+              <form className={styles["login-form"]} onSubmit={handleSubmit}>
                 <div>
-                  <label className={PasswordResetCSS["login-form-label"]} htmlFor="password">
+                  <label className={styles["login-form-label"]} htmlFor="password">
                     Password
                   </label>
                   <input
@@ -94,7 +93,7 @@ export default function PasswordReset() {
                 </div>
                 {error && <div>{error}</div>}
                 {msg && <div>{msg}</div>}
-                <button className={PasswordResetCSS["login-button"]} type="submit">
+                <button className={styles["login-button"]} type="submit">
                   Submit
                 </button>
               </form>

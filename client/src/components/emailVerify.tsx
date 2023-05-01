@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
-import EmailVerifyCSS from "../css/emailauth.module.css";
+import styles from "../css/emailauth.module.css";
 
 export default function EmailVerify() {
   const [validUrl, setValidUrl] = useState(false);
@@ -24,16 +23,16 @@ export default function EmailVerify() {
   }, [param]);
 
   return (
-    <div className={EmailVerifyCSS.container}>
-      <div className={EmailVerifyCSS["container-1"]}>
-        <div className={EmailVerifyCSS["sub-container-1"]}>
+    <div className={styles.container}>
+      <div className={styles["container-1"]}>
+        <div className={styles["sub-container-1"]}>
           <svg
             width="100"
             height="100"
             viewBox="0 0 100 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={EmailVerifyCSS["slingo-logo"]}
+            className={styles["slingo-logo"]}
           >
             <path
               fill-rule="evenodd"
@@ -42,23 +41,23 @@ export default function EmailVerify() {
               fill="white"
             />
           </svg>
-          <h1 className={EmailVerifyCSS["slingo-header"]}>Slingo</h1>
+          <h1 className={styles["slingo-header"]}>Slingo</h1>
         </div>
-        <div className={EmailVerifyCSS["slingo-slogan"]}>
-          <div className={EmailVerifyCSS["quote-part-1"]}>
+        <div className={styles["slingo-slogan"]}>
+          <div className={styles["quote-part-1"]}>
             <p>"Sign language is the noblest gift </p>
             <p>God has given to deaf people."</p>
           </div>
-          <p className={EmailVerifyCSS["quote-author"]}>- George William Veditz</p>
+          <p className={styles["quote-author"]}>- George William Veditz</p>
         </div>
       </div>
-      <div className={EmailVerifyCSS["sub-container-2"]}>
+      <div className={styles["sub-container-2"]}>
         <Fragment>
           {validUrl ? (
-            <div className={EmailVerifyCSS["login-form"]}>
-              <h4 className={EmailVerifyCSS["login-header"]}>Email verified successfully</h4>
+            <div className={styles["login-form"]}>
+              <h4 className={styles["login-header"]}>Email verified successfully</h4>
               <Link to="/login">
-                <button className={EmailVerifyCSS["login-button"]}>Login</button>
+                <button className={styles["login-button"]}>Login</button>
               </Link>
             </div>
           ) : (

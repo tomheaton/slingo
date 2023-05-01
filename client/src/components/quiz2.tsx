@@ -2,12 +2,9 @@ import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
+import styles from "../css/quiz.module.css";
+import { drawRectQuizFamily } from "../utils";
 import Navbar from "./navbar";
-
-// Import drawing utility here
-import { drawRectQuizFamily } from "./utilities";
-
-import QuizCSS from "../css/quiz.module.css";
 
 export default function Quiz() {
   const navigate = useNavigate();
@@ -146,24 +143,24 @@ export default function Quiz() {
 
   if (index !== questions.length) {
     return (
-      <div className={QuizCSS.container}>
+      <div className={styles.container}>
         <Navbar />
-        <div className={QuizCSS["course-details"]}>
-          <p className={QuizCSS["course-heading"]}>Family - test</p>
-          <p className={QuizCSS["question-count"]}>
+        <div className={styles["course-details"]}>
+          <p className={styles["course-heading"]}>Family - test</p>
+          <p className={styles["question-count"]}>
             Question {index + 1} of {questions.length}
           </p>
         </div>
-        <div className={QuizCSS["header-container"]}>
-          <div className={QuizCSS["question-section"]}>
-            <div className={QuizCSS["question-text"]}>
+        <div className={styles["header-container"]}>
+          <div className={styles["question-section"]}>
+            <div className={styles["question-text"]}>
               <p>{questions[index].questionText}</p>
             </div>
           </div>
-          <div className={QuizCSS["answer-section"]}></div>
+          <div className={styles["answer-section"]}></div>
         </div>
-        <div className={QuizCSS["camera-view"]}>
-          <div className={QuizCSS.webcam}>
+        <div className={styles["camera-view"]}>
+          <div className={styles.webcam}>
             <Webcam ref={webcamRef} muted={true} />
 
             <canvas
@@ -182,12 +179,12 @@ export default function Quiz() {
               }}
             />
           </div>
-          <button className={QuizCSS["skip-button"]} onClick={() => setIndex(index + 1)}>
+          <button className={styles["skip-button"]} onClick={() => setIndex(index + 1)}>
             Skip →
           </button>
         </div>
-        <div className={QuizCSS["leave-section"]}>
-          <button onClick={() => navigate("/learn")} className={QuizCSS["leave-button"]}>
+        <div className={styles["leave-section"]}>
+          <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
             Leave session
           </button>
         </div>
@@ -196,22 +193,22 @@ export default function Quiz() {
   }
 
   return (
-    <div className={QuizCSS.container}>
+    <div className={styles.container}>
       <Navbar />
-      <div className={QuizCSS["course-details"]}>
-        <p className={QuizCSS["course-heading"]}>Family - test</p>
-        <p className={QuizCSS["question-count"]}>You have completed the test</p>
+      <div className={styles["course-details"]}>
+        <p className={styles["course-heading"]}>Family - test</p>
+        <p className={styles["question-count"]}>You have completed the test</p>
       </div>
-      <div className={QuizCSS["header-container"]}>
-        <div className={QuizCSS["results-section"]}>
-          <div className={QuizCSS["score"]}>
+      <div className={styles["header-container"]}>
+        <div className={styles["results-section"]}>
+          <div className={styles["score"]}>
             <p>
               You got {score} / {questions.length} correct.
             </p>
           </div>
         </div>
-        <div className={QuizCSS["leave-section"]}>
-          <button onClick={() => navigate("/learn")} className={QuizCSS["leave-button"]}>
+        <div className={styles["leave-section"]}>
+          <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
             Leave session
           </button>
         </div>

@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-
-import LoginCSS from "../css/login.module.css";
+import styles from "../css/login.module.css";
 
 export default function Login() {
   const [data, setData] = useState({
@@ -40,16 +39,16 @@ export default function Login() {
   }
 
   return (
-    <div className={LoginCSS.container}>
-      <div className={LoginCSS["container-1"]}>
-        <div className={LoginCSS["sub-container-1"]}>
+    <div className={styles.container}>
+      <div className={styles["container-1"]}>
+        <div className={styles["sub-container-1"]}>
           <svg
             width="100"
             height="100"
             viewBox="0 0 100 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={LoginCSS["slingo-logo"]}
+            className={styles["slingo-logo"]}
           >
             <path
               fill-rule="evenodd"
@@ -58,21 +57,21 @@ export default function Login() {
               fill="white"
             />
           </svg>
-          <h1 className={LoginCSS["slingo-header"]}>Slingo</h1>
+          <h1 className={styles["slingo-header"]}>Slingo</h1>
         </div>
-        <div className={LoginCSS["slingo-slogan"]}>
-          <div className={LoginCSS["quote-part-1"]}>
+        <div className={styles["slingo-slogan"]}>
+          <div className={styles["quote-part-1"]}>
             <p>"Sign language is the noblest gift </p>
             <p>God has given to deaf people."</p>
           </div>
-          <p className={LoginCSS["quote-author"]}>- George William Veditz</p>
+          <p className={styles["quote-author"]}>- George William Veditz</p>
         </div>
       </div>
-      <div className={LoginCSS["sub-container-2"]}>
-        <h1 className={LoginCSS["login-header"]}>Login</h1>
-        <form className={LoginCSS["login-form"]} onSubmit={onSubmit}>
+      <div className={styles["sub-container-2"]}>
+        <h1 className={styles["login-header"]}>Login</h1>
+        <form className={styles["login-form"]} onSubmit={onSubmit}>
           <div>
-            <label className={LoginCSS["login-form-label"]} htmlFor="email">
+            <label className={styles["login-form-label"]} htmlFor="email">
               Email
             </label>
             <input
@@ -84,7 +83,7 @@ export default function Login() {
             />
           </div>
           <div>
-            <label className={LoginCSS["login-form-label"]} htmlFor="password">
+            <label className={styles["login-form-label"]} htmlFor="password">
               Password
             </label>
             <input
@@ -94,15 +93,15 @@ export default function Login() {
               onChange={(e) => updateForm({ password: e.target.value })}
               placeholder={"Enter your password"}
             />
-            <a className={LoginCSS["forgot-password"]} href="/forgot-password">
+            <a className={styles["forgot-password"]} href="/forgot-password">
               Forgot password?
             </a>
           </div>
           {error && <div>{error}</div>}
-          <button className={LoginCSS["login-button"]} type="submit">
+          <button className={styles["login-button"]} type="submit">
             Login
           </button>
-          <div className={LoginCSS["link-to-signup"]}>
+          <div className={styles["link-to-signup"]}>
             <p>
               Not a user? <a href="/signup">Sign up</a>
             </p>
@@ -113,7 +112,7 @@ export default function Login() {
             viewBox="0 0 690 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={LoginCSS["or-separator"]}
+            className={styles["or-separator"]}
           >
             <path d="M0 5.5H284" stroke="#868686" stroke-width="3" />
             <path d="M406 5.5H690" stroke="#868686" stroke-width="3" />
@@ -122,14 +121,14 @@ export default function Login() {
               fill="#868686"
             />
           </svg>
-          <a href="/auth/google" className={LoginCSS["continue-with-google-button"]}>
+          <a href="/auth/google" className={styles["continue-with-google-button"]}>
             <svg
               width="406"
               height="80"
               viewBox="0 0 406 80"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={LoginCSS["continue-with-google-logo"]}
+              className={styles["continue-with-google-logo"]}
             >
               <path d="M406 0H0V80H406V0Z" fill="white" />
               <path

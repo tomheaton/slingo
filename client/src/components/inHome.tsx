@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import InHomeCSS from "../css/inhome.module.css";
+import styles from "../css/inhome.module.css";
 import Navbar from "./navbar";
 
 export default function InHome() {
@@ -16,17 +16,17 @@ export default function InHome() {
   });
 
   return (
-    <div className={InHomeCSS.container}>
+    <div className={styles.container}>
       <Navbar />
-      <div className={InHomeCSS.intro}>
-        <h1 className={InHomeCSS.home}>Home</h1>
-        <p className={InHomeCSS.greeting}>Hello, {name}</p>
+      <div className={styles.intro}>
+        <h1 className={styles.home}>Home</h1>
+        <p className={styles.greeting}>Hello, {name}</p>
       </div>
-      <div className={InHomeCSS["navigation-buttons"]}>
-        <button onClick={() => navigate("/learn")} className={InHomeCSS["translate-button"]}>
+      <div className={styles["navigation-buttons"]}>
+        <button onClick={() => navigate("/learn")} className={styles["translate-button"]}>
           Learn
         </button>
-        <button onClick={() => navigate("/translate")} className={InHomeCSS["learn-button"]}>
+        <button onClick={() => navigate("/translate")} className={styles["learn-button"]}>
           Translate
         </button>
       </div>

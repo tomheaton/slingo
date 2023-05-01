@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-
-import ForgotPasswordCSS from "../css/emailauth.module.css";
+import styles from "../css/emailauth.module.css";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -27,16 +26,16 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className={ForgotPasswordCSS.container}>
-      <div className={ForgotPasswordCSS["container-1"]}>
-        <div className={ForgotPasswordCSS["sub-container-1"]}>
+    <div className={styles.container}>
+      <div className={styles["container-1"]}>
+        <div className={styles["sub-container-1"]}>
           <svg
             width="100"
             height="100"
             viewBox="0 0 100 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={ForgotPasswordCSS["slingo-logo"]}
+            className={styles["slingo-logo"]}
           >
             <path
               fill-rule="evenodd"
@@ -45,21 +44,21 @@ export default function ForgotPassword() {
               fill="white"
             />
           </svg>
-          <h1 className={ForgotPasswordCSS["slingo-header"]}>Slingo</h1>
+          <h1 className={styles["slingo-header"]}>Slingo</h1>
         </div>
-        <div className={ForgotPasswordCSS["slingo-slogan"]}>
-          <div className={ForgotPasswordCSS["quote-part-1"]}>
+        <div className={styles["slingo-slogan"]}>
+          <div className={styles["quote-part-1"]}>
             <p>"Sign language is the noblest gift </p>
             <p>God has given to deaf people."</p>
           </div>
-          <p className={ForgotPasswordCSS["quote-author"]}>- George William Veditz</p>
+          <p className={styles["quote-author"]}>- George William Veditz</p>
         </div>
       </div>
-      <div className={ForgotPasswordCSS["sub-container-2"]}>
-        <h1 className={ForgotPasswordCSS["login-header"]}>Forgot password</h1>
-        <form className={ForgotPasswordCSS["login-form"]} onSubmit={handleSubmit}>
+      <div className={styles["sub-container-2"]}>
+        <h1 className={styles["login-header"]}>Forgot password</h1>
+        <form className={styles["login-form"]} onSubmit={handleSubmit}>
           <div>
-            <label className={ForgotPasswordCSS["login-form-label"]} htmlFor="email">
+            <label className={styles["login-form-label"]} htmlFor="email">
               Email
             </label>
             <input
@@ -73,7 +72,7 @@ export default function ForgotPassword() {
           </div>
           {error && <div>{error}</div>}
           {msg && <div>{msg}</div>}
-          <button className={ForgotPasswordCSS["login-button"]} type="submit">
+          <button className={styles["login-button"]} type="submit">
             Submit
           </button>
         </form>

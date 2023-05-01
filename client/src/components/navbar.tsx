@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import NavbarCSS from "../css/navbar.module.css";
+import styles from "../css/navbar.module.css";
 
 export default function Navbar() {
   const name = localStorage.getItem("name");
@@ -14,16 +14,16 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={NavbarCSS["navbar-container"]}>
-      <div className={NavbarCSS["navbar-container-content"]}>
-        <div className={NavbarCSS["brand-section"]}>
+    <nav className={styles["navbar-container"]}>
+      <div className={styles["navbar-container-content"]}>
+        <div className={styles["brand-section"]}>
           <svg
             width="150"
             height="150"
             viewBox="0 0 150 150"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={NavbarCSS["brand-logo"]}
+            className={styles["brand-logo"]}
           >
             <circle cx="75" cy="75" r="75" fill="#FF6C2D" />
             <path
@@ -31,10 +31,10 @@ export default function Navbar() {
               fill="white"
             />
           </svg>
-          <p className={NavbarCSS["brand-name"]}>Slingo</p>
+          <p className={styles["brand-name"]}>Slingo</p>
         </div>
-        <div className={NavbarCSS["navigation-section"]}>
-          <div className={NavbarCSS["navigation-icons"]}>
+        <div className={styles["navigation-section"]}>
+          <div className={styles["navigation-icons"]}>
             {/* go back to previous page use navigate */}
             <a onClick={() => navigate(-1)}>
               <svg
@@ -43,7 +43,7 @@ export default function Navbar() {
                 viewBox="0 0 60 60"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className={NavbarCSS["navigation-icon-back"]}
+                className={styles["navigation-icon-back"]}
               >
                 <circle cx="30" cy="30" r="30" fill="#FF6C2D" />
                 <path
@@ -60,7 +60,7 @@ export default function Navbar() {
                 viewBox="0 0 60 60"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className={NavbarCSS["navigation-icon-forward"]}
+                className={styles["navigation-icon-forward"]}
               >
                 <circle cx="30" cy="30" r="30" transform="rotate(180 30 30)" fill="#FF6C2D" />
                 <path
@@ -70,10 +70,10 @@ export default function Navbar() {
               </svg>
             </a>
           </div>
-          <a className={NavbarCSS["user-name"]} href="#">
+          <a className={styles["user-name"]} href="#">
             {name}
           </a>
-          <a className={NavbarCSS["logout-button"]} onClick={handleLogout}>
+          <a className={styles["logout-button"]} onClick={handleLogout}>
             Logout
           </a>
         </div>

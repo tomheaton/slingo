@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-
-import SignupCSS from "../css/signup.module.css";
+import styles from "../css/signup.module.css";
 
 export default function Signup() {
   const [data, setData] = useState({
@@ -39,16 +38,16 @@ export default function Signup() {
 
   // This section will display the form that takes the input from the user
   return (
-    <div className={SignupCSS.container}>
-      <div className={SignupCSS["container-1"]}>
-        <div className={SignupCSS["sub-container-1"]}>
+    <div className={styles.container}>
+      <div className={styles["container-1"]}>
+        <div className={styles["sub-container-1"]}>
           <svg
             width="100"
             height="100"
             viewBox="0 0 100 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={SignupCSS["slingo-logo"]}
+            className={styles["slingo-logo"]}
           >
             <path
               fill-rule="evenodd"
@@ -57,21 +56,21 @@ export default function Signup() {
               fill="white"
             />
           </svg>
-          <h1 className={SignupCSS["slingo-header"]}>Slingo</h1>
+          <h1 className={styles["slingo-header"]}>Slingo</h1>
         </div>
-        <div className={SignupCSS["slingo-welcome"]}>
-          <div className={SignupCSS["quote-part-1"]}>
+        <div className={styles["slingo-welcome"]}>
+          <div className={styles["quote-part-1"]}>
             <p>Communication knows no bounds,</p>
             <p>sign language opens up new pathways</p>
             <p>to connect with others</p>
           </div>
         </div>
       </div>
-      <div className={SignupCSS["sub-container-2"]}>
-        <h1 className={SignupCSS["signup-header"]}>Signup</h1>
-        <form className={SignupCSS["signup-form"]} onSubmit={onSubmit}>
+      <div className={styles["sub-container-2"]}>
+        <h1 className={styles["signup-header"]}>Signup</h1>
+        <form className={styles["signup-form"]} onSubmit={onSubmit}>
           <div>
-            <label className={SignupCSS["signup-form-label"]} htmlFor="name">
+            <label className={styles["signup-form-label"]} htmlFor="name">
               Name
             </label>
             <input
@@ -84,7 +83,7 @@ export default function Signup() {
             />
           </div>
           <div>
-            <label className={SignupCSS["signup-form-label"]} htmlFor="email">
+            <label className={styles["signup-form-label"]} htmlFor="email">
               Email
             </label>
             <input
@@ -97,7 +96,7 @@ export default function Signup() {
             />
           </div>
           <div>
-            <label className={SignupCSS["signup-form-label"]} htmlFor="password">
+            <label className={styles["signup-form-label"]} htmlFor="password">
               Password
             </label>
             <input
@@ -111,10 +110,10 @@ export default function Signup() {
           </div>
           {error && <div>{error}</div>}
           {msg && <div>{msg}</div>}
-          <button className={SignupCSS["create-account-button"]} type="submit">
+          <button className={styles["create-account-button"]} type="submit">
             Create Account
           </button>
-          <div className={SignupCSS["link-to-login"]}>
+          <div className={styles["link-to-login"]}>
             <p>
               Already a user? <a href="/login">Login</a>
             </p>
@@ -125,7 +124,7 @@ export default function Signup() {
             viewBox="0 0 690 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={SignupCSS["or-separator"]}
+            className={styles["or-separator"]}
           >
             <path d="M0 5.5H284" stroke="#868686" stroke-width="3" />
             <path d="M406 5.5H690" stroke="#868686" stroke-width="3" />
@@ -134,14 +133,14 @@ export default function Signup() {
               fill="#868686"
             />
           </svg>
-          <a href="/auth/google" className={SignupCSS["continue-with-google-button"]}>
+          <a href="/auth/google" className={styles["continue-with-google-button"]}>
             <svg
               width="406"
               height="80"
               viewBox="0 0 406 80"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={SignupCSS["continue-with-google-logo"]}
+              className={styles["continue-with-google-logo"]}
             >
               <path d="M406 0H0V80H406V0Z" fill="white" />
               <path

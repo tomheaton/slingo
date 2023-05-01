@@ -4,9 +4,8 @@ import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { ProgressBar } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
+import styles from "../css/learn.module.css";
 import Navbar from "./navbar";
-
-import learnCSS from "../css/learn.module.css";
 
 export default function Learn() {
   const navigate = useNavigate();
@@ -47,41 +46,41 @@ export default function Learn() {
   };
 
   return (
-    <div className={learnCSS.container}>
+    <div className={styles.container}>
       <Navbar />
-      <div className={learnCSS.title}>
-        <h1 className={learnCSS["learn-title"]}>Learn</h1>
-        <p className={learnCSS["learn-text"]}>What do you want to learn today?</p>
-        <div className={learnCSS["progress-bar"]}>
+      <div className={styles.title}>
+        <h1 className={styles["learn-title"]}>Learn</h1>
+        <p className={styles["learn-text"]}>What do you want to learn today?</p>
+        <div className={styles["progress-bar"]}>
           <ProgressBar width={600} height={18} text={`${progress}% progress`} percent={progress} />
         </div>
       </div>
-      <div className={learnCSS["navigation-buttons"]}>
-        <button onClick={handleOpenGreetingsModal} className={learnCSS["greeting-button"]}>
+      <div className={styles["navigation-buttons"]}>
+        <button onClick={handleOpenGreetingsModal} className={styles["greeting-button"]}>
           Greetings
         </button>
-        <button onClick={handleOpenFamilyModal} className={learnCSS["family-button"]}>
+        <button onClick={handleOpenFamilyModal} className={styles["family-button"]}>
           Family
         </button>
-        <button className={learnCSS["numbers-button"]}>Basic Numbers</button>
-        <button className={learnCSS["weather-button"]}>Weather</button>
-        <button className={learnCSS["travel-button"]}>Travel and Transport</button>
-        <button className={learnCSS["directions-button"]}>Giving Directions</button>
+        <button className={styles["numbers-button"]}>Basic Numbers</button>
+        <button className={styles["weather-button"]}>Weather</button>
+        <button className={styles["travel-button"]}>Travel and Transport</button>
+        <button className={styles["directions-button"]}>Giving Directions</button>
       </div>
 
       <Modal
         isOpen={greetingsModalIsOpen}
         onRequestClose={handleCloseGreetingsModal}
         contentLabel="Greetings Modal"
-        className={learnCSS["modal-container"]}
+        className={styles["modal-container"]}
       >
-        <button className={learnCSS["close-button"]} onClick={handleCloseGreetingsModal}>
+        <button className={styles["close-button"]} onClick={handleCloseGreetingsModal}>
           X
         </button>
-        <div className={learnCSS["modal-content"]}>
-          <p className={learnCSS["modal-header"]}>Greetings section</p>
-          <p className={learnCSS["modal-sub-header"]}>What do you want to do?</p>
-          <div className={learnCSS["modal-buttons"]}>
+        <div className={styles["modal-content"]}>
+          <p className={styles["modal-header"]}>Greetings section</p>
+          <p className={styles["modal-sub-header"]}>What do you want to do?</p>
+          <div className={styles["modal-buttons"]}>
             <button onClick={() => navigate("/quiz")}>Test</button>
             <button onClick={() => navigate("/learnsign")}>Learn</button>
             <button onClick={() => navigate("/learninteractively")}>Learn interactively</button>
@@ -93,15 +92,15 @@ export default function Learn() {
         isOpen={familyModalIsOpen}
         onRequestClose={handleCloseFamilyModal}
         contentLabel="Family Modal"
-        className={learnCSS["modal-container"]}
+        className={styles["modal-container"]}
       >
-        <button className={learnCSS["close-button"]} onClick={handleCloseFamilyModal}>
+        <button className={styles["close-button"]} onClick={handleCloseFamilyModal}>
           X
         </button>
-        <div className={learnCSS["modal-content"]}>
-          <p className={learnCSS["modal-header"]}>Family section</p>
-          <p className={learnCSS["modal-sub-header"]}>What do you want to do?</p>
-          <div className={learnCSS["modal-buttons"]}>
+        <div className={styles["modal-content"]}>
+          <p className={styles["modal-header"]}>Family section</p>
+          <p className={styles["modal-sub-header"]}>What do you want to do?</p>
+          <div className={styles["modal-buttons"]}>
             <button onClick={() => navigate("/quiz2")}>Test</button>
             <button onClick={() => navigate("/learnsign2")}>Learn</button>
           </div>
