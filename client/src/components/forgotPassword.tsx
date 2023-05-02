@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import styles from "../css/emailauth.module.css";
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState("");
-  const [msg, setMsg] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [msg, setMsg] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import styles from "../css/emailauth.module.css";
 
 export default function EmailVerify() {
-  const [validUrl, setValidUrl] = useState(false);
+  const [validUrl, setValidUrl] = useState<boolean>(false);
   const param = useParams();
 
   useEffect(() => {

@@ -1,12 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const signSchema = new Schema({
-  name: { type: String, required: true, unique: true },
-  description: { type: String, required: true },
-  // Possibly add image path here
-});
-
 const courseSchema = new Schema({
   title: { type: String, required: true, unique: true },
   signs: [
@@ -17,7 +11,4 @@ const courseSchema = new Schema({
   ],
 });
 
-const Sign = mongoose.model("sign", signSchema);
-const Course = mongoose.model("course", courseSchema);
-
-export { Course, Sign };
+export default mongoose.model("course", courseSchema);

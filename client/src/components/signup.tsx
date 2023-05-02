@@ -3,22 +3,22 @@ import React, { useState } from "react";
 import styles from "../css/signup.module.css";
 
 export default function Signup() {
-  const [data, setData] = useState({
+  const [data, setData] = useState<{ name: string; email: string; password: string }>({
     name: "",
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
-  const [msg, setMsg] = useState("");
+  const [error, setError] = useState<string>("");
+  const [msg, setMsg] = useState<string>("");
 
   // These methods will update the state properties
-  function updateForm(value: { [key: string]: string }) {
+  const updateForm = (value: { [key: string]: string }) => {
     return setData((prev) => {
       return { ...prev, ...value };
     });
-  }
+  };
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -34,7 +34,7 @@ export default function Signup() {
         setMsg("");
       }
     }
-  }
+  };
 
   // This section will display the form that takes the input from the user
   return (

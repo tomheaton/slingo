@@ -3,8 +3,9 @@ import styles from "../css/tutorial.module.css";
 import video from "../videos/slingo.mp4";
 
 export default function Tutorial() {
-  const navigate = useNavigate();
   localStorage.setItem("was_visited", "1");
+
+  const navigate = useNavigate();
 
   return (
     <div className={styles.container}>

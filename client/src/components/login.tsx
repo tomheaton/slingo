@@ -3,20 +3,20 @@ import React, { useState } from "react";
 import styles from "../css/login.module.css";
 
 export default function Login() {
-  const [data, setData] = useState({
+  const [data, setData] = useState<{ email: string; password: string }>({
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
 
   // These methods will update the state properties
-  function updateForm(value: { [key: string]: string }) {
+  const updateForm = (value: { [key: string]: string }) => {
     return setData((prev) => {
       return { ...prev, ...value };
     });
-  }
+  };
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -36,7 +36,7 @@ export default function Login() {
         setError(error.response.data.message);
       }
     }
-  }
+  };
 
   return (
     <div className={styles.container}>

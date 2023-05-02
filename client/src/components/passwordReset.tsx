@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import styles from "../css/emailauth.module.css";
 
 export default function PasswordReset() {
-  const [validUrl, setValidUrl] = useState(false);
-  const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
-  const [error, setError] = useState("");
   const param = useParams();
+
+  const [validUrl, setValidUrl] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>("");
+  const [msg, setMsg] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const url = `http://localhost:8080/api/password-reset/${param.id}/${param.token}`;
 

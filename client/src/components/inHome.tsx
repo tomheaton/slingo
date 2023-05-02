@@ -5,12 +5,14 @@ import Navbar from "./navbar";
 
 export default function InHome() {
   const name = localStorage.getItem("name");
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem("was_visited")) {
       return;
     }
+
     localStorage.setItem("was_visited", "1");
     return navigate("/tutorial");
   });

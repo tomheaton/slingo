@@ -3,6 +3,7 @@ import styles from "../css/home.module.css";
 
 export default function Home() {
   const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <body className={styles.body}>

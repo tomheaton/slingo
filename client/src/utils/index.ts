@@ -13,7 +13,7 @@ const labelMapGreetings = {
   11: { name: "how", color: "lime" },
 };
 
-//The labelMap for family model
+// The labelMap for family model
 const labelMapFamily = {
   1: { name: "step", color: "red" },
   2: { name: "mother", color: "yellow" },

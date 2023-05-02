@@ -5,11 +5,12 @@ import styles from "../css/translate.module.css";
 import { drawRectTranslate } from "../utils";
 import Navbar from "./navbar";
 
-function Translate() {
+export default function Translate() {
   const webcamRef = useRef<Webcam>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [translatedSign, setTranslatedSign] = useState(""); // state variable to store translated sign
-  const [translatedString, setTranslatedString] = useState(""); // state variable to store translated string
+
+  const [translatedSign, setTranslatedSign] = useState<string>(""); // state variable to store translated sign
+  const [translatedString, setTranslatedString] = useState<string>(""); // state variable to store translated string
 
   // concat translated sign to translated string when translatedSign is changed delay 1.5 seconds
   useEffect(() => {
@@ -19,10 +20,9 @@ function Translate() {
     return () => clearTimeout(timer);
   }, [translatedSign]);
 
-  // clear translated string when button clicked, ignoring the interval
-  const clearTranslatedString = () => {
-    setTranslatedString("");
-  };
+  useEffect(() => {
+    runCoco();
+  }, []);
 
   // Main function
   const runCoco = async () => {
@@ -97,9 +97,10 @@ function Translate() {
     }
   };
 
-  useEffect(() => {
-    runCoco();
-  }, []);
+  // clear translated string when button clicked, ignoring the interval
+  const clearTranslatedString = () => {
+    setTranslatedString("");
+  };
 
   return (
     <div className={styles.container}>
@@ -141,5 +142,3 @@ function Translate() {
     </div>
   );
 }
-
-export default Translate;

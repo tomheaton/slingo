@@ -8,10 +8,13 @@ import styles from "../css/learn.module.css";
 import Navbar from "./navbar";
 
 export default function Learn() {
+  const userId = localStorage.getItem("userid");
+
   const navigate = useNavigate();
 
-  const [progress, setProgress] = useState(0);
-  const userId = localStorage.getItem("userid");
+  const [progress, setProgress] = useState<number>(0);
+  const [greetingsModalIsOpen, setGreetingsModalIsOpen] = useState<boolean>(false);
+  const [familyModalIsOpen, setFamilyModalIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const retrieveProgress = async () => {
@@ -25,9 +28,6 @@ export default function Learn() {
     };
     retrieveProgress();
   }, []);
-
-  const [greetingsModalIsOpen, setGreetingsModalIsOpen] = useState(false);
-  const [familyModalIsOpen, setFamilyModalIsOpen] = useState(false);
 
   const handleOpenGreetingsModal = () => {
     setGreetingsModalIsOpen(true);

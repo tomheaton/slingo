@@ -6,16 +6,51 @@ import styles from "../css/quiz.module.css";
 import { drawRectQuizFamily } from "../utils";
 import Navbar from "./navbar";
 
+const questions = [
+  {
+    questionText: "Sign: Step",
+    answers: "step",
+  },
+  {
+    questionText: "Sign: Father",
+    answers: "father",
+  },
+  {
+    questionText: "Sign: Mother",
+    answers: "mother",
+  },
+  {
+    questionText: "Sign: Brother",
+    answers: "brother",
+  },
+  {
+    questionText: "Sign: Your",
+    answers: "your",
+  },
+  {
+    questionText: "Sign: Baby",
+    answers: "baby",
+  },
+  {
+    questionText: "Sign: Sister",
+    answers: "sister",
+  },
+  {
+    questionText: "Sign: Son",
+    answers: "son",
+  },
+];
+
 export default function Quiz() {
   const navigate = useNavigate();
 
-  const [score, setScore] = useState(0);
-  const [index, setIndex] = useState(0);
-  const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
-  const [translatedSign, setTranslatedSign] = useState("");
-
   const webcamRef = useRef<Webcam>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const [score, setScore] = useState<number>(0);
+  const [index, setIndex] = useState<number>(0);
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean>(false);
+  const [translatedSign, setTranslatedSign] = useState<string>("");
 
   useEffect(() => {
     if (translatedSign === questions[index].answers) {
@@ -26,6 +61,10 @@ export default function Quiz() {
       setIsAnswerCorrect(false);
     }
   }, [translatedSign]);
+
+  useEffect(() => {
+    runCoco();
+  }, []);
 
   // Main function
   const runCoco = async () => {
@@ -39,41 +78,6 @@ export default function Quiz() {
       detect(net);
     }, 16.7);
   };
-
-  const questions = [
-    {
-      questionText: "Sign: Step",
-      answers: "step",
-    },
-    {
-      questionText: "Sign: Father",
-      answers: "father",
-    },
-    {
-      questionText: "Sign: Mother",
-      answers: "mother",
-    },
-    {
-      questionText: "Sign: Brother",
-      answers: "brother",
-    },
-    {
-      questionText: "Sign: Your",
-      answers: "your",
-    },
-    {
-      questionText: "Sign: Baby",
-      answers: "baby",
-    },
-    {
-      questionText: "Sign: Sister",
-      answers: "sister",
-    },
-    {
-      questionText: "Sign: Son",
-      answers: "son",
-    },
-  ];
 
   const detect = async (net: tf.GraphModel) => {
     // Check data is available
@@ -137,56 +141,27 @@ export default function Quiz() {
     }
   };
 
-  useEffect(() => {
-    runCoco();
-  }, []);
-
-  if (index !== questions.length) {
+  if (index === questions.length) {
     return (
       <div className={styles.container}>
         <Navbar />
         <div className={styles["course-details"]}>
           <p className={styles["course-heading"]}>Family - test</p>
-          <p className={styles["question-count"]}>
-            Question {index + 1} of {questions.length}
-          </p>
+          <p className={styles["question-count"]}>You have completed the test</p>
         </div>
         <div className={styles["header-container"]}>
-          <div className={styles["question-section"]}>
-            <div className={styles["question-text"]}>
-              <p>{questions[index].questionText}</p>
+          <div className={styles["results-section"]}>
+            <div className={styles["score"]}>
+              <p>
+                You got {score} / {questions.length} correct.
+              </p>
             </div>
           </div>
-          <div className={styles["answer-section"]}></div>
-        </div>
-        <div className={styles["camera-view"]}>
-          <div className={styles.webcam}>
-            <Webcam ref={webcamRef} muted={true} />
-
-            <canvas
-              ref={canvasRef}
-              style={{
-                position: "absolute",
-                marginLeft: "auto",
-                marginRight: "auto",
-                left: 0,
-                right: 0,
-                textAlign: "center",
-                // @ts-ignore
-                zindex: 8,
-                width: 640,
-                height: 480,
-              }}
-            />
+          <div className={styles["leave-section"]}>
+            <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
+              Leave session
+            </button>
           </div>
-          <button className={styles["skip-button"]} onClick={() => setIndex(index + 1)}>
-            Skip →
-          </button>
-        </div>
-        <div className={styles["leave-section"]}>
-          <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
-            Leave session
-          </button>
         </div>
       </div>
     );
@@ -197,21 +172,46 @@ export default function Quiz() {
       <Navbar />
       <div className={styles["course-details"]}>
         <p className={styles["course-heading"]}>Family - test</p>
-        <p className={styles["question-count"]}>You have completed the test</p>
+        <p className={styles["question-count"]}>
+          Question {index + 1} of {questions.length}
+        </p>
       </div>
       <div className={styles["header-container"]}>
-        <div className={styles["results-section"]}>
-          <div className={styles["score"]}>
-            <p>
-              You got {score} / {questions.length} correct.
-            </p>
+        <div className={styles["question-section"]}>
+          <div className={styles["question-text"]}>
+            <p>{questions[index].questionText}</p>
           </div>
         </div>
-        <div className={styles["leave-section"]}>
-          <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
-            Leave session
-          </button>
+        <div className={styles["answer-section"]}></div>
+      </div>
+      <div className={styles["camera-view"]}>
+        <div className={styles.webcam}>
+          <Webcam ref={webcamRef} muted={true} />
+
+          <canvas
+            ref={canvasRef}
+            style={{
+              position: "absolute",
+              marginLeft: "auto",
+              marginRight: "auto",
+              left: 0,
+              right: 0,
+              textAlign: "center",
+              // @ts-ignore
+              zindex: 8,
+              width: 640,
+              height: 480,
+            }}
+          />
         </div>
+        <button className={styles["skip-button"]} onClick={() => setIndex(index + 1)}>
+          Skip →
+        </button>
+      </div>
+      <div className={styles["leave-section"]}>
+        <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
+          Leave session
+        </button>
       </div>
     </div>
   );

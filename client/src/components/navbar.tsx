@@ -3,6 +3,7 @@ import styles from "../css/navbar.module.css";
 
 export default function Navbar() {
   const name = localStorage.getItem("name");
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -52,7 +53,7 @@ export default function Navbar() {
                 />
               </svg>
             </a>
-            {/* navigate to next page in hisotry */}
+            {/* navigate to next page in history */}
             <a onClick={() => navigate(1)}>
               <svg
                 width="60"

@@ -4,7 +4,7 @@ import express from "express";
 import Joi from "joi";
 import passwordComplexity from "joi-password-complexity";
 import Token from "../models/token";
-import { User } from "../models/user";
+import User from "../models/user";
 import sendEmail from "../utils/sendEmail";
 
 const router = express.Router();

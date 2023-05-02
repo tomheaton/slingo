@@ -15,13 +15,29 @@ import step from "../images/family/step.jpg";
 import your from "../images/family/your.jpg";
 import Navbar from "./navbar";
 
+const images = [
+  { src: father, alt: "Father" },
+  { src: mother, alt: "Mother" },
+  { src: son, alt: "Son" },
+  { src: daughter, alt: "Daughter" },
+  { src: brother, alt: "Brother" },
+  { src: sister, alt: "Sister" },
+  { src: step, alt: "Step" },
+  { src: baby, alt: "Baby" },
+  { src: home, alt: "Home" },
+  { src: my, alt: "My" },
+  { src: your, alt: "Your" },
+];
+
 export default function LearnSign2() {
+  const userId = localStorage.getItem("userid");
+
   const navigate = useNavigate();
 
-  // Retrieving course details
-  const [loading, setLoading] = useState(true);
-  const [signs, setSigns] = useState([]);
-  const [signId, setSignId] = useState("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [signs, setSigns] = useState<any[]>([]);
+  const [signId, setSignId] = useState<string>("");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
     const retrieveSignsAndSetSign = async () => {
@@ -38,9 +54,6 @@ export default function LearnSign2() {
     retrieveSignsAndSetSign();
   }, []);
 
-  const userId = localStorage.getItem("userid");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   useEffect(() => {
     const updateProgress = async () => {
       try {
@@ -53,61 +66,47 @@ export default function LearnSign2() {
     updateProgress();
   }, [currentIndex]);
 
-  const images = [
-    { src: father, alt: "Father" },
-    { src: mother, alt: "Mother" },
-    { src: son, alt: "Son" },
-    { src: daughter, alt: "Daughter" },
-    { src: brother, alt: "Brother" },
-    { src: sister, alt: "Sister" },
-    { src: step, alt: "Step" },
-    { src: baby, alt: "Baby" },
-    { src: home, alt: "Home" },
-    { src: my, alt: "My" },
-    { src: your, alt: "Your" },
-  ];
-
-  function handleNextClick() {
+  const handleNextClick = () => {
     const nextIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(nextIndex);
     // @ts-ignore
     setSignId(signs[nextIndex]._id);
-  }
+  };
 
-  function handlePrevClick() {
+  const handlePrevClick = () => {
     const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
     setCurrentIndex(prevIndex);
     // @ts-ignore
     setSignId(signs[prevIndex]._id);
-  }
+  };
 
-  if (!loading) {
+  if (loading) {
     return (
-      <div className={styles.container}>
-        <Navbar />
-        <div className={styles.content}>
-          <h1 className={styles.title}>{signs[currentIndex]["name"]}</h1>
-          <div className={styles["slide-show"]}>
-            <button className={styles.previous} onClick={handlePrevClick}>
-              Previous
-            </button>
-            <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-            <button className={styles.next} onClick={handleNextClick}>
-              Next
-            </button>
-          </div>
-          <p className={styles.description}>{signs[currentIndex]["description"]}</p>
-          <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
-            Leave session
-          </button>
-        </div>
+      <div>
+        <p>loading...</p>
       </div>
     );
   }
 
   return (
-    <div>
-      <p>loading...</p>
+    <div className={styles.container}>
+      <Navbar />
+      <div className={styles.content}>
+        <h1 className={styles.title}>{signs[currentIndex]["name"]}</h1>
+        <div className={styles["slide-show"]}>
+          <button className={styles.previous} onClick={handlePrevClick}>
+            Previous
+          </button>
+          <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
+          <button className={styles.next} onClick={handleNextClick}>
+            Next
+          </button>
+        </div>
+        <p className={styles.description}>{signs[currentIndex]["description"]}</p>
+        <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
+          Leave session
+        </button>
+      </div>
     </div>
   );
 }

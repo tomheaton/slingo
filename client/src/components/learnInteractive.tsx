@@ -18,13 +18,33 @@ import you from "../images/greetings/you.jpg";
 import { drawRectQuizGreetings } from "../utils";
 import Navbar from "./navbar";
 
+const images = [
+  { src: afternoon, alt: "afternoon" },
+  { src: bad, alt: "bad" },
+  { src: good, alt: "good" },
+  { src: hello, alt: "hello" },
+  { src: how, alt: "how" },
+  { src: luck, alt: "luck" },
+  { src: meet, alt: "meet" },
+  { src: morning, alt: "morning" },
+  { src: name, alt: "name" },
+  { src: thanks, alt: "thanks" },
+  { src: you, alt: "you" },
+];
+
 export default function LearnSign() {
+  const userId = localStorage.getItem("userid");
+
   const navigate = useNavigate();
 
-  // Retrieving course details
-  const [loading, setLoading] = useState(true);
-  const [signs, setSigns] = useState([]);
-  const [signId, setSignId] = useState("");
+  const webcamRef = useRef<Webcam>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const [loading, setLoading] = useState<boolean>(true);
+  const [signs, setSigns] = useState<any[]>([]);
+  const [signId, setSignId] = useState<string>("");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [translatedSign, setTranslatedSign] = useState<string>("");
 
   useEffect(() => {
     const retrieveSignsAndSetSign = async () => {
@@ -41,56 +61,39 @@ export default function LearnSign() {
     retrieveSignsAndSetSign();
   }, []);
 
-  const userId = localStorage.getItem("userid");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   useEffect(() => {
-    if (!loading) {
-      const updateProgress = async () => {
-        try {
-          const url = `http://localhost:8080/api/progress/${userId}/${signId}`;
-          await axios.post(url);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      updateProgress();
-    }
+    if (loading) return;
+
+    const updateProgress = async () => {
+      try {
+        const url = `http://localhost:8080/api/progress/${userId}/${signId}`;
+        await axios.post(url);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    updateProgress();
   }, [currentIndex]);
 
-  const images = [
-    { src: afternoon, alt: "afternoon" },
-    { src: bad, alt: "bad" },
-    { src: good, alt: "good" },
-    { src: hello, alt: "hello" },
-    { src: how, alt: "how" },
-    { src: luck, alt: "luck" },
-    { src: meet, alt: "meet" },
-    { src: morning, alt: "morning" },
-    { src: name, alt: "name" },
-    { src: thanks, alt: "thanks" },
-    { src: you, alt: "you" },
-  ];
-
-  function handleNextClick() {
+  const handleNextClick = () => {
     const nextIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(nextIndex);
     // @ts-ignore
     setSignId(signs[nextIndex]._id);
-  }
+  };
 
-  function handlePrevClick() {
+  const handlePrevClick = () => {
     const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
     setCurrentIndex(prevIndex);
     // @ts-ignore
     setSignId(signs[prevIndex]._id);
-  }
+  };
 
-  // Sign checking
-  const [translatedSign, setTranslatedSign] = useState("");
-  const webcamRef = useRef<Webcam>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    runCoco();
+  }, []);
 
+  // Main function
   const runCoco = async () => {
     // Loading the graph model
     const net = await tf.loadGraphModel(
@@ -166,56 +169,54 @@ export default function LearnSign() {
     }
   };
 
-  if (!loading) {
-    runCoco();
-
+  if (loading) {
     return (
-      <div className={styles.container}>
-        <Navbar />
-        <div className={styles.content}>
-          <h1 className={styles.title}>{signs[currentIndex]["name"]}</h1>
-          <div className={styles["slide-show"]}>
-            <button className={styles.previous} onClick={handlePrevClick}>
-              Previous
-            </button>
-            <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
-            <div
-              style={{
-                position: "relative",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: 640,
-                height: 480,
-              }}
-            >
-              <Webcam ref={webcamRef} muted={true} />
-              <canvas
-                ref={canvasRef}
-                style={{
-                  position: "absolute",
-                  zIndex: 8,
-                  width: 640,
-                  height: 480,
-                }}
-              />
-            </div>
-            <button className={styles.next} onClick={handleNextClick}>
-              Next
-            </button>
-          </div>
-          <p className={styles.description}>{signs[currentIndex]["description"]}</p>
-          <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
-            Leave session
-          </button>
-        </div>
+      <div>
+        <p>loading...</p>
       </div>
     );
   }
 
   return (
-    <div>
-      <p>loading...</p>
+    <div className={styles.container}>
+      <Navbar />
+      <div className={styles.content}>
+        <h1 className={styles.title}>{signs[currentIndex]["name"]}</h1>
+        <div className={styles["slide-show"]}>
+          <button className={styles.previous} onClick={handlePrevClick}>
+            Previous
+          </button>
+          <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: 640,
+              height: 480,
+            }}
+          >
+            <Webcam ref={webcamRef} muted={true} />
+            <canvas
+              ref={canvasRef}
+              style={{
+                position: "absolute",
+                zIndex: 8,
+                width: 640,
+                height: 480,
+              }}
+            />
+          </div>
+          <button className={styles.next} onClick={handleNextClick}>
+            Next
+          </button>
+        </div>
+        <p className={styles.description}>{signs[currentIndex]["description"]}</p>
+        <button onClick={() => navigate("/learn")} className={styles["leave-button"]}>
+          Leave session
+        </button>
+      </div>
     </div>
   );
 }
