@@ -4,8 +4,8 @@ import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { ProgressBar } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
-import styles from "../css/learn.module.css";
 import Navbar from "../components/navbar";
+import styles from "../css/learn.module.css";
 
 export default function Learn() {
   const userId = localStorage.getItem("userid");
@@ -17,7 +17,8 @@ export default function Learn() {
   const [familyModalIsOpen, setFamilyModalIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    const retrieveProgress = async () => {
+    // Retrieve progress from database
+    (async () => {
       try {
         const url = `http://localhost:8080/api/progress/${userId}`;
         const { data: res } = await axios.get(url);
@@ -25,8 +26,7 @@ export default function Learn() {
       } catch (error) {
         console.log(error);
       }
-    };
-    retrieveProgress();
+    })();
   }, []);
 
   const handleOpenGreetingsModal = () => {

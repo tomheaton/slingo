@@ -57,9 +57,10 @@ export default function Quiz() {
       setIsAnswerCorrect(true);
       setScore(score + 1);
       setIndex(index + 1);
-    } else {
-      setIsAnswerCorrect(false);
+      return;
     }
+
+    setIsAnswerCorrect(false);
   }, [translatedSign]);
 
   useEffect(() => {

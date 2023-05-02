@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/navbar";
 import styles from "../css/learnSign.module.css";
 import afternoon from "../images/greetings/afternoon.jpg";
 import bad from "../images/greetings/bad.jpg";
@@ -13,7 +14,6 @@ import morning from "../images/greetings/morning.jpg";
 import name from "../images/greetings/name.jpg";
 import thanks from "../images/greetings/thanks.jpg";
 import you from "../images/greetings/you.jpg";
-import Navbar from "../components/navbar";
 
 const images = [
   { src: afternoon, alt: "afternoon" },
@@ -40,7 +40,7 @@ export default function LearnSign() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
-    // Retrieve Signs And Set Sign
+    // Retrieve signs from database
     (async () => {
       try {
         const url = `http://localhost:8080/api/courses/greetings`;
@@ -55,15 +55,15 @@ export default function LearnSign() {
   }, []);
 
   useEffect(() => {
-    const updateProgress = async () => {
+    // Update progress in database
+    (async () => {
       try {
         const url = `http://localhost:8080/api/progress/${userId}/${signId}`;
         await axios.post(url);
       } catch (error) {
         console.log(error);
       }
-    };
-    updateProgress();
+    })();
   }, [currentIndex]);
 
   const handleNextClick = () => {

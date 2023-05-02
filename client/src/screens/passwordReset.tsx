@@ -14,15 +14,15 @@ export default function PasswordReset() {
   const url = `http://localhost:8080/api/password-reset/${param.id}/${param.token}`;
 
   useEffect(() => {
-    const verifyUrl = async () => {
+    // Verify url
+    (async () => {
       try {
         await axios.get(url);
         setValidUrl(true);
       } catch (error) {
         setValidUrl(false);
       }
-    };
-    verifyUrl();
+    })();
   }, [param, url]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

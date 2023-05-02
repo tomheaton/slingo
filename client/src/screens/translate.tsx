@@ -1,9 +1,9 @@
 import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
+import Navbar from "../components/navbar";
 import styles from "../css/translate.module.css";
 import { drawRectTranslate } from "../utils";
-import Navbar from "../components/navbar";
 
 export default function Translate() {
   const webcamRef = useRef<Webcam>(null);
@@ -17,6 +17,7 @@ export default function Translate() {
     const timer = setTimeout(() => {
       setTranslatedString(translatedString + " " + translatedSign);
     }, 1500);
+
     return () => clearTimeout(timer);
   }, [translatedSign]);
 

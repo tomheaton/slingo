@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
+import Navbar from "../components/navbar";
 import styles from "../css/learnInteractive.module.css";
 import afternoon from "../images/greetings/afternoon.jpg";
 import bad from "../images/greetings/bad.jpg";
@@ -16,7 +17,6 @@ import name from "../images/greetings/name.jpg";
 import thanks from "../images/greetings/thanks.jpg";
 import you from "../images/greetings/you.jpg";
 import { drawRectQuizGreetings } from "../utils";
-import Navbar from "../components/navbar";
 
 const images = [
   { src: afternoon, alt: "afternoon" },
@@ -47,7 +47,8 @@ export default function LearnSign() {
   const [translatedSign, setTranslatedSign] = useState<string>("");
 
   useEffect(() => {
-    const retrieveSignsAndSetSign = async () => {
+    // Retrieve signs from database
+    (async () => {
       try {
         const url = `http://localhost:8080/api/courses/greetings`;
         const { data: res } = await axios.get(url);
@@ -57,37 +58,22 @@ export default function LearnSign() {
       } catch (error) {
         console.log(error);
       }
-    };
-    retrieveSignsAndSetSign();
+    })();
   }, []);
 
   useEffect(() => {
     if (loading) return;
 
-    const updateProgress = async () => {
+    // Update progress
+    (async () => {
       try {
         const url = `http://localhost:8080/api/progress/${userId}/${signId}`;
         await axios.post(url);
       } catch (error) {
         console.log(error);
       }
-    };
-    updateProgress();
+    })();
   }, [currentIndex]);
-
-  const handleNextClick = () => {
-    const nextIndex = (currentIndex + 1) % images.length;
-    setCurrentIndex(nextIndex);
-    // @ts-ignore
-    setSignId(signs[nextIndex]._id);
-  };
-
-  const handlePrevClick = () => {
-    const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    setCurrentIndex(prevIndex);
-    // @ts-ignore
-    setSignId(signs[prevIndex]._id);
-  };
 
   useEffect(() => {
     runCoco();
@@ -167,6 +153,20 @@ export default function LearnSign() {
       tf.dispose(expanded);
       tf.dispose(obj);
     }
+  };
+  
+  const handleNextClick = () => {
+    const nextIndex = (currentIndex + 1) % images.length;
+    setCurrentIndex(nextIndex);
+    // @ts-ignore
+    setSignId(signs[nextIndex]._id);
+  };
+
+  const handlePrevClick = () => {
+    const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    setCurrentIndex(prevIndex);
+    // @ts-ignore
+    setSignId(signs[prevIndex]._id);
   };
 
   if (loading) {

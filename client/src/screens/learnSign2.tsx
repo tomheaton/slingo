@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/navbar";
 import styles from "../css/learnSign.module.css";
 import baby from "../images/family/baby.jpg";
 import brother from "../images/family/brother.jpg";
@@ -13,7 +14,6 @@ import sister from "../images/family/sister.jpg";
 import son from "../images/family/son.jpg";
 import step from "../images/family/step.jpg";
 import your from "../images/family/your.jpg";
-import Navbar from "../components/navbar";
 
 const images = [
   { src: father, alt: "Father" },
@@ -40,7 +40,8 @@ export default function LearnSign2() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   useEffect(() => {
-    const retrieveSignsAndSetSign = async () => {
+    // Retrieve signs from database
+    (async () => {
       try {
         const url = `http://localhost:8080/api/courses/family`;
         const { data: res } = await axios.get(url);
@@ -50,20 +51,19 @@ export default function LearnSign2() {
       } catch (error) {
         console.log(error);
       }
-    };
-    retrieveSignsAndSetSign();
+    })();
   }, []);
 
   useEffect(() => {
-    const updateProgress = async () => {
+    // Update progress in database
+    (async () => {
       try {
         const url = `http://localhost:8080/api/progress/${userId}/${signId}`;
         await axios.post(url);
       } catch (error) {
         console.log(error);
       }
-    };
-    updateProgress();
+    })();
   }, [currentIndex]);
 
   const handleNextClick = () => {

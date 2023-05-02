@@ -1,14 +1,16 @@
 import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styles from "../css/emailauth.module.css";
 
 export default function EmailVerify() {
-  const [validUrl, setValidUrl] = useState<boolean>(false);
   const param = useParams();
 
+  const [validUrl, setValidUrl] = useState<boolean>(false);
+
   useEffect(() => {
-    const verifyEmailUrl = async () => {
+    // Verify email url
+    (async () => {
       try {
         const url = `http://localhost:8080/api/users/${param.id}/verify/${param.token}`;
         const { data } = await axios.get(url);
@@ -18,8 +20,7 @@ export default function EmailVerify() {
         console.log(error);
         setValidUrl(false);
       }
-    };
-    verifyEmailUrl();
+    })();
   }, [param]);
 
   return (
@@ -52,7 +53,7 @@ export default function EmailVerify() {
         </div>
       </div>
       <div className={styles["sub-container-2"]}>
-        <Fragment>
+        <>
           {validUrl ? (
             <div className={styles["login-form"]}>
               <h4 className={styles["login-header"]}>Email verified successfully</h4>
@@ -63,7 +64,7 @@ export default function EmailVerify() {
           ) : (
             <h1>404 Not Found</h1>
           )}
-        </Fragment>
+        </>
       </div>
     </div>
   );

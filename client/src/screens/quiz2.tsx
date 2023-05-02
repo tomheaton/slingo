@@ -2,9 +2,9 @@ import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
+import Navbar from "../components/navbar";
 import styles from "../css/quiz.module.css";
 import { drawRectQuizFamily } from "../utils";
-import Navbar from "../components/navbar";
 
 const questions = [
   {
@@ -57,9 +57,10 @@ export default function Quiz() {
       setIsAnswerCorrect(true);
       setScore(score + 1);
       setIndex(index + 1);
-    } else {
-      setIsAnswerCorrect(false);
+      return;
     }
+
+    setIsAnswerCorrect(false);
   }, [translatedSign]);
 
   useEffect(() => {

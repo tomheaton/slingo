@@ -20,30 +20,28 @@ const App = () => {
   const user = localStorage.getItem("token");
 
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={user ? <InHome /> : <Home />} />
+    <Routes>
+      <Route path="/" element={user ? <InHome /> : <Home />} />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/password-reset/:id/:token" element={<PasswordReset />} />
 
-        {user && (
-          <>
-            <Route path="/tutorial" element={<Tutorial />} />
-            <Route path="/learn" element={<Learn />} />
-            <Route path="/learnSign" element={<LearnSign />} />
-            <Route path="/learnInteractively" element={<LearnInteractive />} />
-            <Route path="/learnSign2" element={<LearnSign2 />} />
-            <Route path="/quiz" element={<Quiz />} />
-            <Route path="/quiz2" element={<Quiz2 />} />
-            <Route path="/translate" element={<Translate />} />
-          </>
-        )}
-      </Routes>
-    </div>
+      {user && (
+        <>
+          <Route path="/tutorial" element={<Tutorial />} />
+          <Route path="/learn" element={<Learn />} />
+          <Route path="/learnSign" element={<LearnSign />} />
+          <Route path="/learnInteractively" element={<LearnInteractive />} />
+          <Route path="/learnSign2" element={<LearnSign2 />} />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/quiz2" element={<Quiz2 />} />
+          <Route path="/translate" element={<Translate />} />
+        </>
+      )}
+    </Routes>
   );
 };
 
