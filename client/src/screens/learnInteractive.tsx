@@ -95,66 +95,66 @@ export default function LearnSign() {
   const detect = async (net: tf.GraphModel) => {
     // Check data is available
     if (
-      typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null &&
-      webcamRef.current.video?.readyState === 4 &&
-      canvasRef.current !== null
+      typeof webcamRef.current === "undefined" ||
+      webcamRef.current === null ||
+      webcamRef.current.video?.readyState !== 4 ||
+      canvasRef.current === null
     ) {
-      // Get video properties
-      const video = webcamRef.current.video;
-      const videoWidth = webcamRef.current.video.videoWidth;
-      const videoHeight = webcamRef.current.video.videoHeight;
-
-      // Set video width
-      webcamRef.current.video.width = videoWidth;
-      webcamRef.current.video.height = videoHeight;
-
-      // Set canvas height and width
-      canvasRef.current.width = videoWidth;
-      canvasRef.current.height = videoHeight;
-
-      // Make Detections
-      const img = tf.browser.fromPixels(video);
-      const resized = tf.image.resizeBilinear(img, [640, 480]);
-      const casted = resized.cast("int32");
-      const expanded = casted.expandDims(0);
-      const obj = await net.executeAsync(expanded);
-
-      tf.Tensor<tf.Rank>;
-
-      // @ts-ignore
-      const boxes = await obj[2].array();
-      // @ts-ignore
-      const classes = await obj[4].array();
-      // @ts-ignore
-      const scores = await obj[7].array();
-
-      // Draw mesh
-      const ctx = canvasRef.current.getContext("2d");
-
-      // Update drawing utility
-      requestAnimationFrame(() => {
-        // @ts-ignore
-        drawRectQuizGreetings(
-          boxes[0],
-          classes[0],
-          scores[0],
-          0.65,
-          videoWidth,
-          videoHeight,
-          ctx,
-          setTranslatedSign,
-        );
-      });
-
-      tf.dispose(img);
-      tf.dispose(resized);
-      tf.dispose(casted);
-      tf.dispose(expanded);
-      tf.dispose(obj);
+      return;
     }
+
+    // Get video properties
+    const video = webcamRef.current.video;
+    const videoWidth = webcamRef.current.video.videoWidth;
+    const videoHeight = webcamRef.current.video.videoHeight;
+
+    // Set video width
+    webcamRef.current.video.width = videoWidth;
+    webcamRef.current.video.height = videoHeight;
+
+    // Set canvas height and width
+    canvasRef.current.width = videoWidth;
+    canvasRef.current.height = videoHeight;
+
+    // Make Detections
+    const img = tf.browser.fromPixels(video);
+    const resized = tf.image.resizeBilinear(img, [640, 480]);
+    const casted = resized.cast("int32");
+    const expanded = casted.expandDims(0);
+    const obj = await net.executeAsync(expanded);
+
+    // @ts-ignore
+    const boxes = await obj[2].array();
+    // @ts-ignore
+    const classes = await obj[4].array();
+    // @ts-ignore
+    const scores = await obj[7].array();
+
+    // Draw mesh
+    const ctx = canvasRef.current.getContext("2d");
+
+    // Update drawing utility
+    requestAnimationFrame(() => {
+      // @ts-ignore
+      drawRectQuizGreetings(
+        boxes[0],
+        classes[0],
+        scores[0],
+        0.65,
+        videoWidth,
+        videoHeight,
+        ctx,
+        setTranslatedSign,
+      );
+    });
+
+    tf.dispose(img);
+    tf.dispose(resized);
+    tf.dispose(casted);
+    tf.dispose(expanded);
+    tf.dispose(obj);
   };
-  
+
   const handleNextClick = () => {
     const nextIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(nextIndex);
