@@ -14,9 +14,9 @@
   },
   "homepage": "https://github.com/niccolosottile/slingo#readme",
   "scripts": {
-    "client": "yarn start --prefix client",
-    "server": "yarn start --prefix server",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "client": "yarn workspace client dev",
+    "server": "yarn workspace server dev",
+    "dev": "concurrently \"yarn client\" \"yarn server\"",
     "format": "prettier --write ."
   },
   "devDependencies": {

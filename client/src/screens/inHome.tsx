@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../css/inhome.module.css";
-import Navbar from "./navbar";
+import Navbar from "../components/navbar";
 
 export default function InHome() {
   const name = localStorage.getItem("name");

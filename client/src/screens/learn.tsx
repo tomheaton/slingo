@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ProgressBar } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
 import styles from "../css/learn.module.css";
-import Navbar from "./navbar";
+import Navbar from "../components/navbar";
 
 export default function Learn() {
   const userId = localStorage.getItem("userid");

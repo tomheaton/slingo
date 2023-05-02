@@ -13,7 +13,7 @@ import sister from "../images/family/sister.jpg";
 import son from "../images/family/son.jpg";
 import step from "../images/family/step.jpg";
 import your from "../images/family/your.jpg";
-import Navbar from "./navbar";
+import Navbar from "../components/navbar";
 
 const images = [
   { src: father, alt: "Father" },

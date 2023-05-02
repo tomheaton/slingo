@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import styles from "../css/translate.module.css";
 import { drawRectTranslate } from "../utils";
-import Navbar from "./navbar";
+import Navbar from "../components/navbar";
 
 export default function Translate() {
   const webcamRef = useRef<Webcam>(null);

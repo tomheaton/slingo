@@ -3,41 +3,41 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
 import styles from "../css/quiz.module.css";
-import { drawRectQuizGreetings } from "../utils";
-import Navbar from "./navbar";
+import { drawRectQuizFamily } from "../utils";
+import Navbar from "../components/navbar";
 
 const questions = [
   {
-    questionText: "Sign: Hello",
-    answers: "hello",
+    questionText: "Sign: Step",
+    answers: "step",
   },
   {
-    questionText: "Sign: Thanks",
-    answers: "thanks",
+    questionText: "Sign: Father",
+    answers: "father",
   },
   {
-    questionText: "Sign: Good",
-    answers: "good",
+    questionText: "Sign: Mother",
+    answers: "mother",
   },
   {
-    questionText: "Sign: Afternoon",
-    answers: "afternoon",
+    questionText: "Sign: Brother",
+    answers: "brother",
   },
   {
-    questionText: "Sign: Meet",
-    answers: "meet",
+    questionText: "Sign: Your",
+    answers: "your",
   },
   {
-    questionText: "Sign: You",
-    answers: "you",
+    questionText: "Sign: Baby",
+    answers: "baby",
   },
   {
-    questionText: "Sign: How",
-    answers: "how",
+    questionText: "Sign: Sister",
+    answers: "sister",
   },
   {
-    questionText: "Sign: Bad",
-    answers: "bad",
+    questionText: "Sign: Son",
+    answers: "son",
   },
 ];
 
@@ -70,7 +70,7 @@ export default function Quiz() {
   const runCoco = async () => {
     // Loading the graph model
     const net = await tf.loadGraphModel(
-      "https://raw.githubusercontent.com/dp846/SlingoModels/main/model.json",
+      "https://raw.githubusercontent.com/dp846/SlingoModels/main/family_v1/model.json",
     );
 
     // Detect every 16.7 ms
@@ -108,18 +108,18 @@ export default function Quiz() {
       const obj = await net.executeAsync(expanded);
 
       // @ts-ignore
-      const boxes = await obj[2].array();
+      const boxes = await obj[3].array();
       // @ts-ignore
-      const classes = await obj[4].array();
+      const classes = await obj[7].array();
       // @ts-ignore
-      const scores = await obj[7].array();
+      const scores = await obj[4].array();
 
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
 
       // Update drawing utility
       requestAnimationFrame(() => {
-        drawRectQuizGreetings(
+        drawRectQuizFamily(
           boxes[0],
           classes[0],
           scores[0],
@@ -146,7 +146,7 @@ export default function Quiz() {
       <div className={styles.container}>
         <Navbar />
         <div className={styles["course-details"]}>
-          <p className={styles["course-heading"]}>Greetings - test</p>
+          <p className={styles["course-heading"]}>Family - test</p>
           <p className={styles["question-count"]}>You have completed the test</p>
         </div>
         <div className={styles["header-container"]}>
@@ -171,7 +171,7 @@ export default function Quiz() {
     <div className={styles.container}>
       <Navbar />
       <div className={styles["course-details"]}>
-        <p className={styles["course-heading"]}>Greetings - test</p>
+        <p className={styles["course-heading"]}>Family - test</p>
         <p className={styles["question-count"]}>
           Question {index + 1} of {questions.length}
         </p>
