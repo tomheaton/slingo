@@ -20,7 +20,7 @@
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.0.1",
     "prettier": "^2.8.8"
   },
   "workspaces": [
