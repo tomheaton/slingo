@@ -17,7 +17,7 @@ export default function Navbar() {
   return (
     <nav className={styles["navbar-container"]}>
       <div className={styles["navbar-container-content"]}>
-        <div className={styles["brand-section"]}>
+        <div className={styles["brand-section"]} onClick={() => navigate("/")}>
           <svg
             width="150"
             height="150"

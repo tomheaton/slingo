@@ -3,6 +3,16 @@ import passwordComplexity from "joi-password-complexity";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 
+export const validate = (data: any) => {
+  const schema = Joi.object({
+    name: Joi.string().required().label("Name"),
+    email: Joi.string().required().label("Email"),
+    password: passwordComplexity().required().label("Password"),
+  });
+
+  return schema.validate(data);
+};
+
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
@@ -19,13 +29,3 @@ userSchema.methods.generateAuthToken = function () {
 };
 
 export default mongoose.model("user", userSchema);
-
-export const validate = (data: any) => {
-  const schema = Joi.object({
-    name: Joi.string().required().label("Name"),
-    email: Joi.string().required().label("Email"),
-    password: passwordComplexity().required().label("Password"),
-  });
-
-  return schema.validate(data);
-};
