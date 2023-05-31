@@ -1,0 +1,28 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "ATLAS_URI",
+    "PORT",
+    "BASE_URL",
+    "HOST",
+    "SERVICE",
+    "EMAIL_PORT",
+    "SECURE",
+    "EMAIL_USER",
+    "EMAIL_PASS"
+  ],
+  "pipeline": {
+    "build": {
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
