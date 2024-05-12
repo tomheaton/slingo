@@ -1,19 +1,19 @@
+import Navbar from "@/components/navbar";
+import styles from "@/css/learnSign.module.css";
+import baby from "@/images/family/baby.jpg";
+import brother from "@/images/family/brother.jpg";
+import daughter from "@/images/family/daughter.jpg";
+import father from "@/images/family/father.jpg";
+import home from "@/images/family/home.jpg";
+import mother from "@/images/family/mother.jpg";
+import my from "@/images/family/my.jpg";
+import sister from "@/images/family/sister.jpg";
+import son from "@/images/family/son.jpg";
+import step from "@/images/family/step.jpg";
+import your from "@/images/family/your.jpg";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/navbar";
-import styles from "../css/learnSign.module.css";
-import baby from "../images/family/baby.jpg";
-import brother from "../images/family/brother.jpg";
-import daughter from "../images/family/daughter.jpg";
-import father from "../images/family/father.jpg";
-import home from "../images/family/home.jpg";
-import mother from "../images/family/mother.jpg";
-import my from "../images/family/my.jpg";
-import sister from "../images/family/sister.jpg";
-import son from "../images/family/son.jpg";
-import step from "../images/family/step.jpg";
-import your from "../images/family/your.jpg";
 
 const images = [
   { src: father, alt: "Father" },

@@ -1,7 +1,7 @@
+import styles from "@/css/emailauth.module.css";
 import axios from "axios";
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styles from "../css/emailauth.module.css";
 
 export default function PasswordReset() {
   const param = useParams();

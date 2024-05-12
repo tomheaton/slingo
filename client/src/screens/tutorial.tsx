@@ -1,6 +1,6 @@
+import styles from "@/css/tutorial.module.css";
+import video from "@/videos/slingo.mp4";
 import { useNavigate } from "react-router-dom";
-import styles from "../css/tutorial.module.css";
-import video from "../videos/slingo.mp4";
 
 export default function Tutorial() {
   localStorage.setItem("was_visited", "1");

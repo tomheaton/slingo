@@ -1,6 +1,6 @@
+import styles from "@/css/login.module.css";
 import axios from "axios";
 import React, { useState } from "react";
-import styles from "../css/login.module.css";
 
 export default function Login() {
   const [data, setData] = useState<{ email: string; password: string }>({

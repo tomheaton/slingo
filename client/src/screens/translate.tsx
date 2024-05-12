@@ -1,9 +1,9 @@
+import Navbar from "@/components/navbar";
+import styles from "@/css/translate.module.css";
+import { drawRectTranslate } from "@/utils";
 import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
-import Navbar from "../components/navbar";
-import styles from "../css/translate.module.css";
-import { drawRectTranslate } from "../utils";
 
 export default function Translate() {
   const webcamRef = useRef<Webcam>(null);
