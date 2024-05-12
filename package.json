@@ -1,7 +1,7 @@
 {
   "name": "slingo",
   "version": "1.0.0",
-  "description": "Slingo aims at dimishing the communication barrier for deaf people. It uses deep learning with image recognition to translate sign language from visual user input, providing a course and translation service.",
+  "description": "Slingo aims at diminishing the communication barrier for deaf people. It uses deep learning with image recognition to translate sign language from visual user input, providing a course and translation service.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/niccolosottile/slingo.git"
@@ -17,10 +17,10 @@
     "dev": "turbo run dev",
     "dev:client": "turbo run dev --filter=client",
     "dev:server": "turbo run dev --filter=server",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "clean": "turbo run clean"
   },
   "devDependencies": {
-    "concurrently": "^8.0.1",
     "prettier": "^2.8.8",
     "turbo": "^1.10.0"
   },
