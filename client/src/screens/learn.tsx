@@ -1,11 +1,11 @@
+import Navbar from "@/components/navbar";
+import styles from "@/css/learn.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { ProgressBar } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
-import Navbar from "../components/navbar";
-import styles from "../css/learn.module.css";
 
 export default function Learn() {
   const userId = localStorage.getItem("userid");

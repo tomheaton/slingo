@@ -1,7 +1,7 @@
+import styles from "@/css/emailauth.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import styles from "../css/emailauth.module.css";
 
 export default function EmailVerify() {
   const param = useParams();

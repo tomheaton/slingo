@@ -1,5 +1,5 @@
+import styles from "@/css/navbar.module.css";
 import { useNavigate } from "react-router-dom";
-import styles from "../css/navbar.module.css";
 
 export default function Navbar() {
   const name = localStorage.getItem("name");

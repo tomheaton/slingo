@@ -1,6 +1,6 @@
+import styles from "@/css/emailauth.module.css";
 import axios from "axios";
 import React, { useState } from "react";
-import styles from "../css/emailauth.module.css";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState<string>("");

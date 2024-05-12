@@ -1,12 +1,12 @@
+import authRoutes from "@/routes/auth";
+import courses from "@/routes/courses";
+import passwordResetRoutes from "@/routes/passwordReset";
+import progress from "@/routes/progress";
+import userRoutes from "@/routes/users";
+import connection from "@/utils/db";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import authRoutes from "./routes/auth";
-import courses from "./routes/courses";
-import passwordResetRoutes from "./routes/passwordReset";
-import progress from "./routes/progress";
-import userRoutes from "./routes/users";
-import connection from "./utils/db";
 
 dotenv.config({ path: "../.env" });
 

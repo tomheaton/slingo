@@ -1,19 +1,19 @@
+import Navbar from "@/components/navbar";
+import styles from "@/css/learnSign.module.css";
+import afternoon from "@/images/greetings/afternoon.jpg";
+import bad from "@/images/greetings/bad.jpg";
+import good from "@/images/greetings/good.jpg";
+import hello from "@/images/greetings/hello.jpg";
+import how from "@/images/greetings/how.jpg";
+import luck from "@/images/greetings/luck.jpg";
+import meet from "@/images/greetings/meet.jpg";
+import morning from "@/images/greetings/morning.jpg";
+import name from "@/images/greetings/name.jpg";
+import thanks from "@/images/greetings/thanks.jpg";
+import you from "@/images/greetings/you.jpg";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/navbar";
-import styles from "../css/learnSign.module.css";
-import afternoon from "../images/greetings/afternoon.jpg";
-import bad from "../images/greetings/bad.jpg";
-import good from "../images/greetings/good.jpg";
-import hello from "../images/greetings/hello.jpg";
-import how from "../images/greetings/how.jpg";
-import luck from "../images/greetings/luck.jpg";
-import meet from "../images/greetings/meet.jpg";
-import morning from "../images/greetings/morning.jpg";
-import name from "../images/greetings/name.jpg";
-import thanks from "../images/greetings/thanks.jpg";
-import you from "../images/greetings/you.jpg";
 
 const images = [
   { src: afternoon, alt: "afternoon" },

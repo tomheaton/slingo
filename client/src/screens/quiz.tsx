@@ -1,10 +1,10 @@
+import Navbar from "@/components/navbar";
+import styles from "@/css/quiz.module.css";
+import { drawRectQuizGreetings } from "@/utils";
 import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
-import Navbar from "../components/navbar";
-import styles from "../css/quiz.module.css";
-import { drawRectQuizGreetings } from "../utils";
 
 const questions = [
   {

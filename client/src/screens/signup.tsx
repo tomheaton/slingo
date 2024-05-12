@@ -1,6 +1,6 @@
+import styles from "@/css/signup.module.css";
 import axios from "axios";
 import React, { useState } from "react";
-import styles from "../css/signup.module.css";
 
 export default function Signup() {
   const [data, setData] = useState<{ name: string; email: string; password: string }>({
