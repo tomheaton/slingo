@@ -1,9 +1,17 @@
+# Dependencies
 node_modules
+
+# ENV
 .env
+
+# macOS
 .DS_Store
+
+# IDE
 .vscode
 .idea
+
+# Build
 .turbo
 build/**
 dist/**
-.next/**
