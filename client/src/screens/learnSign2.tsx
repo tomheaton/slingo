@@ -1,33 +1,9 @@
 import Navbar from "@/components/navbar";
 import styles from "@/css/learnSign.module.css";
-import baby from "@/images/family/baby.jpg";
-import brother from "@/images/family/brother.jpg";
-import daughter from "@/images/family/daughter.jpg";
-import father from "@/images/family/father.jpg";
-import home from "@/images/family/home.jpg";
-import mother from "@/images/family/mother.jpg";
-import my from "@/images/family/my.jpg";
-import sister from "@/images/family/sister.jpg";
-import son from "@/images/family/son.jpg";
-import step from "@/images/family/step.jpg";
-import your from "@/images/family/your.jpg";
+import { familyImages } from "@/lib/images";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const images = [
-  { src: father, alt: "Father" },
-  { src: mother, alt: "Mother" },
-  { src: son, alt: "Son" },
-  { src: daughter, alt: "Daughter" },
-  { src: brother, alt: "Brother" },
-  { src: sister, alt: "Sister" },
-  { src: step, alt: "Step" },
-  { src: baby, alt: "Baby" },
-  { src: home, alt: "Home" },
-  { src: my, alt: "My" },
-  { src: your, alt: "Your" },
-];
 
 export default function LearnSign2() {
   const userId = localStorage.getItem("userid");
@@ -67,14 +43,14 @@ export default function LearnSign2() {
   }, [currentIndex]);
 
   const handleNextClick = () => {
-    const nextIndex = (currentIndex + 1) % images.length;
+    const nextIndex = (currentIndex + 1) % familyImages.length;
     setCurrentIndex(nextIndex);
     // @ts-ignore
     setSignId(signs[nextIndex]._id);
   };
 
   const handlePrevClick = () => {
-    const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    const prevIndex = currentIndex === 0 ? familyImages.length - 1 : currentIndex - 1;
     setCurrentIndex(prevIndex);
     // @ts-ignore
     setSignId(signs[prevIndex]._id);
@@ -97,7 +73,7 @@ export default function LearnSign2() {
           <button className={styles.previous} onClick={handlePrevClick}>
             Previous
           </button>
-          <img src={images[currentIndex].src} alt={images[currentIndex].alt} />
+          <img src={familyImages[currentIndex].src} alt={familyImages[currentIndex].alt} />
           <button className={styles.next} onClick={handleNextClick}>
             Next
           </button>

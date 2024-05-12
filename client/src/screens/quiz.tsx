@@ -1,6 +1,6 @@
 import Navbar from "@/components/navbar";
 import styles from "@/css/quiz.module.css";
-import { drawRectQuizGreetings } from "@/utils";
+import { drawRectQuizGreetings } from "@/lib/draw";
 import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";

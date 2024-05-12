@@ -1,18 +1,18 @@
+import { sendEmail } from "@/lib/email";
 import Token from "@/models/token";
 import User from "@/models/user";
-import sendEmail from "@/utils/sendEmail";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import express from "express";
-import Joi from "joi";
+import joi from "joi";
 import passwordComplexity from "joi-password-complexity";
 
 const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const emailSchema = Joi.object({
-      email: Joi.string().email().required().label("Email"),
+    const emailSchema = joi.object({
+      email: joi.string().email().required().label("Email"),
     });
     const { error } = emailSchema.validate(req.body);
     if (error) {
@@ -66,7 +66,7 @@ router.get("/:id/:token", async (req, res) => {
 // set new password
 router.post("/:id/:token", async (req, res) => {
   try {
-    const passwordSchema = Joi.object({
+    const passwordSchema = joi.object({
       password: passwordComplexity().required().label("Password"),
     });
     const { error } = passwordSchema.validate(req.body);

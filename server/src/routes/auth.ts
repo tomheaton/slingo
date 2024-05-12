@@ -1,10 +1,10 @@
+import { sendEmail } from "@/lib/email";
 import Token from "@/models/token";
 import User from "@/models/user";
-import sendEmail from "@/utils/sendEmail";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import express from "express";
-import Joi from "joi";
+import joi from "joi";
 
 const router = express.Router();
 
@@ -52,9 +52,9 @@ router.post("/", async (req, res) => {
 });
 
 const validate = (data: any) => {
-  const schema = Joi.object({
-    email: Joi.string().email().required().label("Email"),
-    password: Joi.string().required().label("Password"),
+  const schema = joi.object({
+    email: joi.string().email().required().label("Email"),
+    password: joi.string().required().label("Password"),
   });
   return schema.validate(data);
 };

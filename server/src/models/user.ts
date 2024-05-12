@@ -1,12 +1,12 @@
-import Joi from "joi";
+import joi from "joi";
 import passwordComplexity from "joi-password-complexity";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 
 export const validate = (data: any) => {
-  const schema = Joi.object({
-    name: Joi.string().required().label("Name"),
-    email: Joi.string().required().label("Email"),
+  const schema = joi.object({
+    name: joi.string().required().label("Name"),
+    email: joi.string().required().label("Email"),
     password: passwordComplexity().required().label("Password"),
   });
 

@@ -1,6 +1,6 @@
+import { sendEmail } from "@/lib/email";
 import Token from "@/models/token";
 import User, { validate } from "@/models/user";
-import sendEmail from "@/utils/sendEmail";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import express from "express";

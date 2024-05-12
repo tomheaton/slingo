@@ -1,6 +1,6 @@
 import Navbar from "@/components/navbar";
 import styles from "@/css/translate.module.css";
-import { drawRectTranslate } from "@/utils";
+import { drawRectTranslate } from "@/lib/draw";
 import * as tf from "@tensorflow/tfjs";
 import { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";

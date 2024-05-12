@@ -29,7 +29,7 @@ const labelMapFamily = {
 };
 
 // Define a drawing function
-export const drawRectTranslate = (
+export function drawRectTranslate(
   // @ts-ignore
   boxes,
   // @ts-ignore
@@ -41,7 +41,7 @@ export const drawRectTranslate = (
   imgHeight: number,
   ctx: CanvasRenderingContext2D | null,
   setTranslatedSign: (sign: string) => void,
-) => {
+) {
   for (let i = 0; i <= boxes.length; i++) {
     if (scores[i] > threshold && boxes[i] && classes[i]) {
       // Extract variables
@@ -78,9 +78,9 @@ export const drawRectTranslate = (
       ctx.stroke();
     }
   }
-};
+}
 
-export const drawRectQuizGreetings = (
+export function drawRectQuizGreetings(
   // @ts-ignore
   boxes,
   // @ts-ignore
@@ -96,7 +96,7 @@ export const drawRectQuizGreetings = (
   setIsAnswerCorrect: (isCorrect: boolean) => void,
   // @ts-ignore
   answers,
-) => {
+) {
   for (let i = 0; i <= boxes.length; i++) {
     if (scores[i] > threshold && boxes[i] && classes[i]) {
       // Extract variables
@@ -133,9 +133,9 @@ export const drawRectQuizGreetings = (
       ctx.stroke();
     }
   }
-};
+}
 
-export const drawRectQuizFamily = (
+export function drawRectQuizFamily(
   // @ts-ignore
   boxes,
   // @ts-ignore
@@ -151,7 +151,7 @@ export const drawRectQuizFamily = (
   setIsAnswerCorrect: (isCorrect: boolean) => void,
   // @ts-ignore
   answers,
-) => {
+) {
   for (let i = 0; i <= boxes.length; i++) {
     if (scores[i] > threshold && boxes[i] && classes[i]) {
       // Extract variables
@@ -186,4 +186,4 @@ export const drawRectQuizFamily = (
       ctx.stroke();
     }
   }
-};
+}

@@ -15,7 +15,7 @@ import Translate from "@/screens/translate";
 import Tutorial from "@/screens/tutorial";
 import { Route, Routes } from "react-router-dom";
 
-const App = () => {
+export default function App() {
   const user = localStorage.getItem("token");
 
   return (
@@ -42,6 +42,4 @@ const App = () => {
       )}
     </Routes>
   );
-};
-
-export default App;
+}
