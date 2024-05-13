@@ -1,9 +1,10 @@
 import Navbar from "@/components/navbar";
 import styles from "@/css/learnInteractive.module.css";
+import axios from "@/lib/axios";
 import { drawRectQuizGreetings } from "@/lib/draw";
 import { greetingImages } from "@/lib/images";
 import * as tf from "@tensorflow/tfjs";
-import axios from "axios";
+import type { AxiosResponse } from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
@@ -26,8 +27,13 @@ export default function LearnSign() {
     // Retrieve signs from database
     (async () => {
       try {
-        const url = `http://localhost:8080/api/courses/greetings`;
-        const { data: res } = await axios.get(url);
+        const {
+          data: res,
+        }: AxiosResponse<{
+          course: {
+            signs: any[];
+          };
+        }> = await axios.get("/courses/greetings");
         setSigns(res.course.signs);
         setSignId(res.course.signs[0]._id);
         setLoading(false);
@@ -43,8 +49,7 @@ export default function LearnSign() {
     // Update progress
     (async () => {
       try {
-        const url = `http://localhost:8080/api/progress/${userId}/${signId}`;
-        await axios.post(url);
+        await axios.post(`/progress/${userId}/${signId}`);
       } catch (error) {
         console.log(error);
       }
@@ -58,9 +63,7 @@ export default function LearnSign() {
   // Main function
   const runCoco = async () => {
     // Loading the graph model
-    const net = await tf.loadGraphModel(
-      "https://raw.githubusercontent.com/dp846/SlingoModels/main/model.json",
-    );
+    const net = await tf.loadGraphModel(`${import.meta.env.VITE_MODEL_URL}/model.json`);
 
     // Detect every 16.7 ms
     setInterval(() => {

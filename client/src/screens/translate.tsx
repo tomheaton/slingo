@@ -28,9 +28,7 @@ export default function Translate() {
   // Main function
   const runCoco = async () => {
     // Loading the graph model
-    const net = await tf.loadGraphModel(
-      "https://raw.githubusercontent.com/dp846/SlingoModels/main/model.json",
-    );
+    const net = await tf.loadGraphModel(`${import.meta.env.VITE_MODEL_URL}/model.json`);
 
     // Detect every 16.7 ms
     setInterval(() => {

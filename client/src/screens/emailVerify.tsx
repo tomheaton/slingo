@@ -1,5 +1,5 @@
 import styles from "@/css/emailauth.module.css";
-import axios from "axios";
+import axios from "@/lib/axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -12,8 +12,7 @@ export default function EmailVerify() {
     // Verify email url
     (async () => {
       try {
-        const url = `http://localhost:8080/api/users/${param.id}/verify/${param.token}`;
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(`/users/${param.id}/verify/${param.token}`);
         console.log(data);
         setValidUrl(true);
       } catch (error) {

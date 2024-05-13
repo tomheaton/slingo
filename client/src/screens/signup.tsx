@@ -1,5 +1,6 @@
 import styles from "@/css/signup.module.css";
-import axios from "axios";
+import axios from "@/lib/axios";
+import type { AxiosResponse } from "axios";
 import { useState } from "react";
 
 export default function Signup() {
@@ -22,8 +23,11 @@ export default function Signup() {
     e.preventDefault();
 
     try {
-      const url = `http://localhost:8080/api/users`;
-      const { data: res } = await axios.post(url, data);
+      const {
+        data: res,
+      }: AxiosResponse<{
+        message: string;
+      }> = await axios.post("/users", data);
       setMsg(res.message);
       setError("");
     } catch (error) {

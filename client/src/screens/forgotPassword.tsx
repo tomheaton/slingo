@@ -1,5 +1,5 @@
 import styles from "@/css/emailauth.module.css";
-import axios from "axios";
+import axios from "@/lib/axios";
 import { useState } from "react";
 
 export default function ForgotPassword() {
@@ -11,8 +11,7 @@ export default function ForgotPassword() {
     e.preventDefault();
 
     try {
-      const url = `http://localhost:8080/api/password-reset`;
-      const { data } = await axios.post(url, { email });
+      const { data } = await axios.post("/password-reset", { email });
       setMsg(data.message);
       setError("");
     } catch (error) {

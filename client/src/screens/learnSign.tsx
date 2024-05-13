@@ -1,7 +1,8 @@
 import Navbar from "@/components/navbar";
 import styles from "@/css/learnSign.module.css";
+import axios from "@/lib/axios";
 import { greetingImages } from "@/lib/images";
-import axios from "axios";
+import type { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,8 +20,13 @@ export default function LearnSign() {
     // Retrieve signs from database
     (async () => {
       try {
-        const url = `http://localhost:8080/api/courses/greetings`;
-        const { data: res } = await axios.get(url);
+        const {
+          data: res,
+        }: AxiosResponse<{
+          course: {
+            signs: any[];
+          };
+        }> = await axios.get("/courses/greetings");
         setSigns(res.course.signs);
         setSignId(res.course.signs[0]._id);
         setLoading(false);
@@ -34,8 +40,7 @@ export default function LearnSign() {
     // Update progress in database
     (async () => {
       try {
-        const url = `http://localhost:8080/api/progress/${userId}/${signId}`;
-        await axios.post(url);
+        await axios.post(`/progress/${userId}/${signId}`);
       } catch (error) {
         console.log(error);
       }

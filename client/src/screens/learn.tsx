@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import styles from "@/css/learn.module.css";
-import axios from "axios";
+import axios from "@/lib/axios";
+import type { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
@@ -20,8 +21,9 @@ export default function Learn() {
     // Retrieve progress from database
     (async () => {
       try {
-        const url = `http://localhost:8080/api/progress/${userId}`;
-        const { data: res } = await axios.get(url);
+        const { data: res }: AxiosResponse<{ overallProgress: number }> = await axios.get(
+          `/progress/${userId}`,
+        );
         setProgress(Math.round((res.overallProgress / 22) * 100));
       } catch (error) {
         console.log(error);

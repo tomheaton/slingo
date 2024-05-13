@@ -1,5 +1,5 @@
 import styles from "@/css/emailauth.module.css";
-import axios from "axios";
+import axios from "@/lib/axios";
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -11,25 +11,23 @@ export default function PasswordReset() {
   const [msg, setMsg] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  const url = `http://localhost:8080/api/password-reset/${param.id}/${param.token}`;
-
   useEffect(() => {
     // Verify url
     (async () => {
       try {
-        await axios.get(url);
+        await axios.get(`/password-reset/${param.id}/${param.token}`);
         setValidUrl(true);
       } catch (error) {
         setValidUrl(false);
       }
     })();
-  }, [param, url]);
+  }, [param, param.id, param.token]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(url, { password });
+      const { data } = await axios.post(`/password-reset/${param.id}/${param.token}`, { password });
       setMsg(data.message);
       setError("");
       // @ts-ignore

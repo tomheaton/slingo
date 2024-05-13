@@ -1,5 +1,6 @@
 import styles from "@/css/login.module.css";
-import axios from "axios";
+import axios from "@/lib/axios";
+import type { AxiosResponse } from "axios";
 import { useState } from "react";
 
 export default function Login() {
@@ -20,8 +21,8 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const url = `http://localhost:8080/api/auth/`;
-      const { data: res } = await axios.post(url, data);
+      const { data: res }: AxiosResponse<{ token: string; name: string; userId: string }> =
+        await axios.post("/auth", data);
 
       localStorage.setItem("token", res.token);
       localStorage.setItem("name", res.name);

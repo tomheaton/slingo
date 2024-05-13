@@ -70,9 +70,7 @@ export default function Quiz() {
   // Main function
   const runCoco = async () => {
     // Loading the graph model
-    const net = await tf.loadGraphModel(
-      "https://raw.githubusercontent.com/dp846/SlingoModels/main/family_v1/model.json",
-    );
+    const net = await tf.loadGraphModel(`${import.meta.env.VITE_MODEL_URL}/family_v1/model.json`);
 
     // Detect every 16.7 ms
     setInterval(() => {
