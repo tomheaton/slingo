@@ -1,5 +1,17 @@
-.next
-.vercel
-.idea
+# Dependencies
+node_modules
+pnpm-lock.yaml
+
+# ENV
+.env
+
+# macOS
+.DS_Store
+
+# IDE
 .vscode
+.idea
+
+# Build
+.turbo
 dist
