@@ -3,24 +3,29 @@
   "globalEnv": [
     "ATLAS_URI",
     "PORT",
+    "SALT",
+    "JWT_SECRET_KEY",
     "BASE_URL",
     "HOST",
     "SERVICE",
     "EMAIL_PORT",
     "SECURE",
     "EMAIL_USER",
-    "EMAIL_PASS"
+    "EMAIL_PASS",
+    "VITE_API_URL",
+    "VITE_MODEL_URL"
   ],
   "pipeline": {
-    "build": {
-      "outputs": [".next/**", "!.next/cache/**"]
-    },
-    "start": {
-      "dependsOn": ["build"],
+    "dev": {
       "cache": false,
       "persistent": true
     },
-    "dev": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".dist/**"]
+    },
+    "start": {
+      "dependsOn": ["build"],
       "cache": false,
       "persistent": true
     }

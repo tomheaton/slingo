@@ -49,7 +49,7 @@ export default function Quiz() {
 
   const [score, setScore] = useState<number>(0);
   const [index, setIndex] = useState<number>(0);
-  const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean>(false);
+  const [_isAnswerCorrect, setIsAnswerCorrect] = useState<boolean>(false);
   const [translatedSign, setTranslatedSign] = useState<string>("");
 
   useEffect(() => {

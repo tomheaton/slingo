@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "dev_test": "tsc --watch ./src/index.ts",
     "build": "esbuild src/index.ts --bundle --packages=external --platform=node --format=esm --outdir=dist --sourcemap",
     "start": "node dist/index.js",
     "clean": "rm -rf node_modules dist"

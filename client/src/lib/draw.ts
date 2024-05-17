@@ -93,7 +93,7 @@ export function drawRectQuizGreetings(
   // @ts-ignore
   ctx,
   setTranslatedSign: (sign: string) => void,
-  setIsAnswerCorrect: (isCorrect: boolean) => void,
+  _setIsAnswerCorrect: (isCorrect: boolean) => void,
   // @ts-ignore
   answers,
 ) {
@@ -148,7 +148,7 @@ export function drawRectQuizFamily(
   // @ts-ignore
   ctx,
   setTranslatedSign: (sign: string) => void,
-  setIsAnswerCorrect: (isCorrect: boolean) => void,
+  _setIsAnswerCorrect: (isCorrect: boolean) => void,
   // @ts-ignore
   answers,
 ) {

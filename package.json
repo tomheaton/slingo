@@ -1,24 +1,21 @@
 {
   "name": "slingo",
   "version": "1.0.0",
+  "private": true,
   "description": "Slingo aims at diminishing the communication barrier for deaf people. It uses deep learning with image recognition to translate sign language from visual user input, providing a course and translation service.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/niccolosottile/slingo.git"
-  },
   "author": "ESP group 19 at University of Bath",
   "license": "UNLICENSED",
-  "private": true,
-  "bugs": {
-    "url": "https://github.com/niccolosottile/slingo/issues"
-  },
-  "homepage": "https://github.com/niccolosottile/slingo#readme",
+  "repository": "https://github.com/niccolosottile/slingo.git",
+  "homepage": "https://github.com/niccolosottile/slingo",
+  "bugs": "https://github.com/niccolosottile/slingo/issues",
   "scripts": {
     "dev": "turbo run dev",
     "dev:client": "turbo run dev --filter=client",
     "dev:server": "turbo run dev --filter=server",
-    "format": "prettier --write .",
-    "clean": "turbo run clean"
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "clean": "turbo run clean",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "prettier": "^2.8.8",

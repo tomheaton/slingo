@@ -21,7 +21,7 @@ export default function LearnSign() {
   const [signs, setSigns] = useState<any[]>([]);
   const [signId, setSignId] = useState<string>("");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [translatedSign, setTranslatedSign] = useState<string>("");
+  const [_translatedSign, setTranslatedSign] = useState<string>("");
 
   useEffect(() => {
     // Retrieve signs from database
